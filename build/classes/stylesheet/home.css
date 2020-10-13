@@ -1,0 +1,10 @@
+.root{
+    
+}  
+
+.button{
+    -fx-border-color: #ff0000; 
+    -fx-border-width: 5px;
+     -fx-height: 10px; 
+     -fx-width: 20px;
+}
