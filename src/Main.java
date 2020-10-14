@@ -22,11 +22,9 @@ public class Main extends Application {
         Parent loginRoot = FXMLLoader.load(getClass().getResource("/resources/fxml/login.fxml"));
         Scene loginScene = new Scene(loginRoot);
 
-
         primaryStage.setTitle("Home");
         primaryStage.setScene(loginScene);
         primaryStage.show();
-
 
     }
     
