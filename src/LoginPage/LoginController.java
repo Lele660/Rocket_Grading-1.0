@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package resources.fxml;
+package LoginPage;
 
 import admin.Jdbc;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,6 +20,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -36,7 +39,11 @@ public class LoginController implements Initializable {
     @FXML
     Button signin;
     @FXML
+    Button create;
+    @FXML
     TextField email;
+    @FXML
+    ImageView background1;
     
     Stage dialogStage = new Stage();
     Scene scene;
@@ -69,13 +76,17 @@ public class LoginController implements Initializable {
         System.out.print(name);
 
         Jdbc jdbc = new Jdbc();
-        jdbc.insertRecord(name, emailId,pass);
+        jdbc.insertRecord(name,emailId,pass);
 
         showAlert(Alert.AlertType.CONFIRMATION, dialogStage, "Registration Successful!",
         "Welcome " + username.getText());
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        File classroomFile = new File("img/classroom.jpg");
+        Image classroomImage = new Image(classroomFile.toURI().toString());
+        background1.setImage(classroomImage);
+        
         // TODO
     }    
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
