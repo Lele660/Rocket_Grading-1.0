@@ -1,3 +1,5 @@
+package admin;
+
 
 
 /*
@@ -10,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.Stage;
 
+
 /**
  *
  * @author lelezhao
@@ -18,6 +21,9 @@ public class Main extends Application {
     public static void main(String[] args) {
        launch(args);
     }
+    
+    
+    @Override
     public void start(Stage primaryStage) throws Exception {
         Parent loginRoot = FXMLLoader.load(getClass().getResource("/resources/fxml/login.fxml"));
         Scene loginScene = new Scene(loginRoot);
