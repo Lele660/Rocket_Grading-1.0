@@ -53,6 +53,7 @@ public class LoginController implements Initializable {
         
         System.out.println(username.getText());
         System.out.println(password.getText());
+        System.out.println(email.getText());
         
         Node node = (Node)event.getSource();
         dialogStage = (Stage) node.getScene().getWindow();
@@ -68,7 +69,12 @@ public class LoginController implements Initializable {
                     "Please enter your password");
             return;
         }
-    
+        
+        if(email.getText().isEmpty()){
+            showAlert(Alert.AlertType.ERROR, dialogStage, "Form Error!",
+                    "Please enter your correct email address");
+            return;
+        }
     
         String name = username.getText();
         String pass = password.getText();

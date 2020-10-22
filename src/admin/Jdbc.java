@@ -13,10 +13,11 @@ import java.sql.SQLException;
  * @author lelezhao
  */
 public class Jdbc {
-    private static final String DATABASE_URL ="jdbc:mysql://localhost:3306/?user=root";
+    private static final String DATABASE_URL ="jdbc:mysql://localhost:3306/";
     private static final String DATABASE_USERNAME ="root";
     private static final String DATABASE_PASSWORD = "12345678";
     private static final String INSERT_QUERY = "input ur real data plz";
+    
     
     public void insertRecord(String fullName,String emailId, String password) throws SQLException {
 
