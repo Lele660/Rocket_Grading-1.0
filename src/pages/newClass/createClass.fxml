@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pages.newClass.CreateClassController">
+    <children>
+        <ImageView fx:id="background1" layoutX="10.0" layoutY="10.0" opacity="0.43" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.6" x="100.0" y="100.0">
+            <image>
+            <Image url="@../img/classroom.jpg" />
+            </image>
+        </ImageView>
+        <VBox fx:id="background" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1400.0" style="-fx-background-color: fbf6f6; -fx-border-width: 0px;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <Button id="signOut" fx:id="signOut" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#signOut" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Sign Out" textAlignment="CENTER" textFill="#fffefe">
+                <font>
+                    <Font name="Apple Chancery" size="18.0" />
+                </font>
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="2.0" top="1.0" />
+                </padding>
+                <VBox.margin>
+                    <Insets left="1150.0" bottom="730.0" />
+                </VBox.margin>
+            </Button>
+        </VBox> 
+        <Button id="Home" fx:id="Home" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#home" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Home" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="45.0">
+            <font>
+                <Font name="Apple Chancery" size="18.0" />
+            </font>
+        </Button>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="1900.0" style="-fx-background-color: #112416; -fx-border-width: 0px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0"> 
+        </Label>
+        <Label alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Course Code:" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="300.0">
+            <font>
+                <Font name="Apple Chancery" size="18.0" />
+            </font>
+        </Label>
+        <TextField id="courseCode" fx:id="courseCode" layoutX="110.0" layoutY="121.0" minWidth="300.0" style="-fx-pref-height: 10px; -fx-max-width: 200px; -fx-outline: none; -fx-border-bottom: groove; -fx-border-color: #112416 #112416; -fx-background-color: transparent; -fx-padding: 10px, 10px; -fx-border-style: none; -fx-border-width: 0 0 2px;" text= "" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="320.0">
+            <font>
+                    <Font name="Apple Chancery" size="25.0" />
+                </font>
+        </TextField>
+        <Button id="addStudents" fx:id="addStudents" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#addStudents" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Add Students" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="300.0">
+            <font>
+                <Font name="Apple Chancery" size="18.0" />
+            </font>
+        </Button>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="23.0" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: fbf6f6; -fx-border-width: 10px; -fx-border-style: solid; -fx-border-color: #112416;" text="Rocket Grading" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="50.0">
+            <font>
+                <Font name="AppleMyungjo Regular" size="30.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </Label>
+        <VBox fx:id="bottomBackground" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="1400.0" style="-fx-background-color: fbf6f6; -fx-border-width: 0px;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="600.0">
+            <Button id="done" fx:id="done" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#done"  prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Done" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="50.0">
+                <font>
+                    <Font name="Apple Chancery" size="18.0" />
+                </font>
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="2.0" top="1.0" />
+                </padding>
+                <VBox.margin>
+                    <Insets left="600.0" right="600.0" bottom="200.0" />
+                </VBox.margin>
+            </Button>
+        </VBox> 
+    </children>
+</AnchorPane>
