@@ -13,7 +13,8 @@ import java.sql.SQLException;
  * @author lelezhao
  */
 public class Jdbc {
-    private static final String DATABASE_URL ="jdbc:mysql://localhost:3306/";
+    private static final String DATABASE_NAME = "Rocket_Grading";
+    private static final String DATABASE_URL ="jdbc:mysql://localhost:3306/?user=root" + DATABASE_NAME ;
     private static final String DATABASE_USERNAME ="root";
     private static final String DATABASE_PASSWORD = "12345678";
     private static final String INSERT_QUERY = "input ur real data plz";
@@ -21,7 +22,7 @@ public class Jdbc {
     
     public void insertRecord(String fullName,String emailId, String password) throws SQLException {
 
-        // Step 1: Establishing a Connection and 
+        // Step 1: Establishing a JdbcDao and 
         // try-with-resource statement will auto close the connection.
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
 

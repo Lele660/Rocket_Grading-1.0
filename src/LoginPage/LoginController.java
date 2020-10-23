@@ -6,10 +6,15 @@
 package LoginPage;
 
 import admin.Jdbc;
+import admin.JdbcDao;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,7 +44,7 @@ public class LoginController implements Initializable {
     @FXML
     Button signin;
     @FXML
-    Button create;
+    Button register;
     @FXML
     TextField email;
     @FXML
@@ -60,32 +65,27 @@ public class LoginController implements Initializable {
        
 
         if (username.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, dialogStage, "Form Error!",
+            showAlert(Alert.AlertType.ERROR, "Form Error!",
                     "Please enter your name");
             return;
         }
         if(password.getText().isEmpty()){
-            showAlert(Alert.AlertType.ERROR, dialogStage, "Form Error!",
+            showAlert(Alert.AlertType.ERROR,  "Form Error!",
                     "Please enter your password");
             return;
         }
         
         if(email.getText().isEmpty()){
-            showAlert(Alert.AlertType.ERROR, dialogStage, "Form Error!",
+            showAlert(Alert.AlertType.ERROR, "Form Error!",
                     "Please enter your correct email address");
             return;
         }
-    
-        String name = username.getText();
-        String pass = password.getText();
-        String emailId = email.getText();
-        System.out.print(name);
+        createUser();
+        showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
+        "Resgistration successful " + username.getText());
+        
+        
 
-        Jdbc jdbc = new Jdbc();
-        jdbc.insertRecord(name,emailId,pass);
-
-        showAlert(Alert.AlertType.CONFIRMATION, dialogStage, "Registration Successful!",
-        "Welcome " + username.getText());
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -95,13 +95,83 @@ public class LoginController implements Initializable {
         
         // TODO
     }    
-    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+    private static void showAlert(Alert.AlertType alertType,String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
-        alert.initOwner(owner);
         alert.show();
     }
     
+    
+    public void validateLogin(){
+        JdbcDao jdbc = new JdbcDao();
+        Connection database = jdbc.getConnection();
+        String sql ="select * from Rocket_Grading.login where username = ? and password = ?";
+        
+//        String varification = "SELECT * FROM Rocket_Grading.login WHERE username = '" + username.getText()+"', email = '"+ email.getText() +"' AND password = '" + password.getText() +"'";
+//        System.out.println(varification);
+        try{
+            PreparedStatement statement = database.prepareStatement(sql);
+            statement.setString(1,username.getText());
+            statement.setString(2,password.getText());
+
+            ResultSet queryResult = statement.executeQuery();
+            if(!queryResult.next()){
+                showAlert(Alert.AlertType.ERROR,"Something went wrong",
+                            "Please enter the correct username and password");
+
+            }else{
+                 showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
+        "welcome back " + username.getText());
+            }
+            
+//            while(queryResult.next()){
+//                if(queryResult.getInt(varification)==1){
+//                    System.out.println("did it");
+//                     showAlert(Alert.AlertType.CONFIRMATION, dialogStage, "Welcome",
+//        "back " + username.getText());
+//                }else{
+//                    showAlert(Alert.AlertType.ERROR,dialogStage,"Something went wrong",
+//                            "Please enter username and password");
+//                }
+//            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+            
+        };
+    
+    }
+    
+    public void signin(ActionEvent event) throws SQLException, IOException {
+        if (username.getText().isEmpty() == false && password.getText().isEmpty() == false) {
+            validateLogin();
+        }else{
+            showAlert(Alert.AlertType.ERROR,"Something went wrong", "Please enter username and password");
+        }
+     
+    }
+    
+    public void createUser(){
+        JdbcDao jdbc2 = new JdbcDao();
+        Connection conn = jdbc2.getConnection();
+        
+        String query = "INSERT INTO login(username,email,password) VALUES(?,?,?)";
+        
+        try{
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1,username.getText());
+            statement.setString(2,email.getText());
+            statement.setString(3,password.getText());
+            
+            statement.executeUpdate();      
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }   
+    }
+
 }
