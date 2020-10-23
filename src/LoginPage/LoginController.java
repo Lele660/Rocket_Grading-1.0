@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package LoginPage;
-
-import admin.Jdbc;
 import admin.JdbcDao;
 import java.io.File;
 import java.io.IOException;
@@ -54,12 +52,6 @@ public class LoginController implements Initializable {
     Scene scene;
     @FXML
     public void register(ActionEvent event) throws SQLException, IOException {
-        
-        
-        System.out.println(username.getText());
-        System.out.println(password.getText());
-        System.out.println(email.getText());
-        
         Node node = (Node)event.getSource();
         dialogStage = (Stage) node.getScene().getWindow();
        
@@ -83,8 +75,6 @@ public class LoginController implements Initializable {
         createUser();
         showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
         "Resgistration successful " + username.getText());
-        
-        
 
     }
     @Override

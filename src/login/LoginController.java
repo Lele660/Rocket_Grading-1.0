@@ -62,9 +62,7 @@ public class LoginController implements Initializable {
             showAlert(Alert.AlertType.ERROR, dialogStage, "Form Error!",
                     "Please enter your password");
             return;
-        }
-    
-    
+        } 
         String name = username.getText();
         String pass = password.getText();
         String emailId = email.getText();
