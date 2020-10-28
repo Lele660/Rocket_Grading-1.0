@@ -5,6 +5,7 @@
  */
 package LoginPage;
 import admin.JdbcDao;
+import admin.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -47,6 +48,8 @@ public class LoginController implements Initializable {
     TextField email;
     @FXML
     ImageView background1;
+    public static String loggerUsername ="";
+    public static int loggerId;
     
     Stage dialogStage = new Stage();
     Scene scene;
@@ -97,7 +100,7 @@ public class LoginController implements Initializable {
     public void validateLogin(){
         JdbcDao jdbc = new JdbcDao();
         Connection database = jdbc.getConnection();
-        String sql ="select * from Rocket_Grading.login where username = ? and password = ?";
+        String sql ="select * from Rocket_Grading.User where username = ? and password = ?";
         
 //        String varification = "SELECT * FROM Rocket_Grading.login WHERE username = '" + username.getText()+"', email = '"+ email.getText() +"' AND password = '" + password.getText() +"'";
 //        System.out.println(varification);
@@ -114,18 +117,10 @@ public class LoginController implements Initializable {
             }else{
                  showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
         "welcome back " + username.getText());
+                 loggerUsername = queryResult.getString("username");
+                 loggerId = queryResult.getInt("UserId");
+                 
             }
-            
-//            while(queryResult.next()){
-//                if(queryResult.getInt(varification)==1){
-//                    System.out.println("did it");
-//                     showAlert(Alert.AlertType.CONFIRMATION, dialogStage, "Welcome",
-//        "back " + username.getText());
-//                }else{
-//                    showAlert(Alert.AlertType.ERROR,dialogStage,"Something went wrong",
-//                            "Please enter username and password");
-//                }
-//            }
             
         }catch(Exception e){
             e.printStackTrace();
@@ -138,6 +133,7 @@ public class LoginController implements Initializable {
     public void signin(ActionEvent event) throws SQLException, IOException {
         if (username.getText().isEmpty() == false && password.getText().isEmpty() == false) {
             validateLogin();
+            User sample = new User(username.getText());
         }else{
             showAlert(Alert.AlertType.ERROR,"Something went wrong", "Please enter username and password");
         }
@@ -148,7 +144,7 @@ public class LoginController implements Initializable {
         JdbcDao jdbc2 = new JdbcDao();
         Connection conn = jdbc2.getConnection();
         
-        String query = "INSERT INTO login(username,email,password) VALUES(?,?,?)";
+        String query = "INSERT INTO User(username,email,password) VALUES(?,?,?)";
         
         try{
             PreparedStatement statement = conn.prepareStatement(query);
@@ -156,7 +152,7 @@ public class LoginController implements Initializable {
             statement.setString(2,email.getText());
             statement.setString(3,password.getText());
             
-            statement.executeUpdate();      
+            statement.executeUpdate();
         }
         catch(Exception e){
             e.printStackTrace();

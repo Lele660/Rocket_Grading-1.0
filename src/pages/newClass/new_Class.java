@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pages.newAccount;
-
+package pages.newClass;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -14,18 +13,18 @@ import javafx.stage.Stage;
  *
  * @author vanessa
  */
-public class newAccount extends Application {
-    public static void main(String[] args) {
+public class new_Class extends Application{
+    public static void main(String[] args){
        launch(args);
     }
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent NewAccountRoot = FXMLLoader.load(getClass().getResource("cA.fxml"));
-        Scene NewAccountScene = new Scene(NewAccountRoot);
+        Parent newClassRoot = FXMLLoader.load(getClass().getResource("createClass.fxml"));
+        Scene newClassScene = new Scene(newClassRoot);
 
-        primaryStage.setTitle("Create an Account");
-        primaryStage.setScene(NewAccountScene);
+        primaryStage.setTitle("Creating Class");
+        primaryStage.setScene(newClassScene);
         primaryStage.show();
     }
 }

@@ -26,18 +26,22 @@ assignment list;
 public class User {
     private String name;
     private String className;
+    private int userId;
     private ArrayList<Student> studentList = new ArrayList<Student> ();
     private ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
     
-    public User(String name, String className, ArrayList<String> students, ArrayList<String> assignments){
+    public User(String name, String className,int userId, ArrayList<String> students, ArrayList<String> assignments){
         this.setName(name);         
+    }
+    public User(String name){
+        this.setName(name);
+        
     }
     
     
     public void setName(String name){
         this.name = name;
     }
-   
     public void setClassName(String className){
         this.className = className;
     }
@@ -48,8 +52,27 @@ public class User {
         this.assignmentList.add(a);
     }
     
+    public String getName(){
+        return this.name;
+    }
     
+    public String getClassName(){
+        return this.className;
+    }
     
+    public ArrayList<Student> getStudentList(){
+        return this.studentList;
+    }
+    public ArrayList<Assignment> getAssignmentList(){
+        return this.assignmentList;
+    }
+    
+    public void setUserId(int userid){
+        this.userId=userid;
+    }
+    public int getUserId(){
+        return this.userId;
+    }
     
     
     

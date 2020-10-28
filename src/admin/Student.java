@@ -10,5 +10,35 @@ package admin;
  * @author lelezhao
  */
 public class Student {
+    private String firstName;
+    private String lastName;
+    private double grade;
     
+    
+   public Student(String first, String last, double grade){
+       this.setFirstName(first);
+       this.setLastName(last);
+       this.setGrade(grade);
+       
+   }
+   
+   public void setGrade(double n){
+       this.grade = n;
+   }
+   public double getGrade(){
+       return this.grade;
+   }
+   public void setFirstName(String first){
+       this.firstName=first;
+   }
+   public void setLastName(String last){
+       this.lastName = last;
+   }
+   public String getLastName(){
+       return this.lastName;
+   }
+   public String getFirstName(){
+       return this.firstName;
+   }
+  
 }

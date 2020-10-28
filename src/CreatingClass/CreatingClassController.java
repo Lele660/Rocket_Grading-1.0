@@ -5,9 +5,14 @@
  */
 package CreatingClass;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -23,5 +28,17 @@ public class CreatingClassController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    @FXML 
+    Button courseCode;
+    @FXML
+    Button addStudents;
+    
+     public void addCourse (ActionEvent event) throws SQLException, IOException {
+         if(!courseCode.getText().isEmpty()){
+             
+         }
+     }
+    
+    
     
 }
