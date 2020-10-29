@@ -9,9 +9,6 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
  *
@@ -21,23 +18,22 @@ public class homePage extends Application{
     public static void main(String[] args) {
        launch(args);
     }
-    
+/*<MenuButton id="classes" fx:id="classes" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Classes" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="825.0" AnchorPane.topAnchor="300.0">
+            <font>
+                <Font name="Apple Chancery" size="18.0" />
+            </font>
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="" text="1" />
+                <MenuItem mnemonicParsing="false" onAction="" text="2" />
+                <MenuItem mnemonicParsing="false" onAction="" text="3" />
+            </items>
+     </MenuButton>
+*/
      @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Home");
-        VBox homeRoot= new VBox();
-        MenuItem item1=new MenuItem("taco");
-        MenuItem item2=new MenuItem("burrito");
-        Node node=null;
-        
-        MenuButton menuButton= new MenuButton("Food", node, item1, item2);
-        
-        homeRoot.getChildren().addAll(menuButton);
-        
-        //Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
         Scene homeScene = new Scene(homeRoot);
-
-       
         primaryStage.setScene(homeScene);
         primaryStage.show();
     }

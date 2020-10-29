@@ -49,7 +49,7 @@ public class LoginController implements Initializable {
     @FXML
     ImageView background1;
     public static String loggerUsername ="";
-    public static int loggerId;
+    public static int loggerId = 12;
     
     Stage dialogStage = new Stage();
     Scene scene;

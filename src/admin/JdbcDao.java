@@ -33,7 +33,10 @@ public class JdbcDao {
 
 }
    
-    
+    public void connect(){
+        JdbcDao jdbc2 = new JdbcDao();
+        Connection conn = jdbc2.getConnection();
+    }
    
     
     

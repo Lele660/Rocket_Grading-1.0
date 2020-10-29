@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -29,7 +27,7 @@
                     <Insets bottom="5.0" left="5.0" right="2.0" top="1.0" />
                 </padding>
                 <VBox.margin>
-                    <Insets left="1150.0" bottom="730.0" />
+                    <Insets bottom="730.0" left="1150.0" />
                 </VBox.margin>
             </Button>
         </VBox> 
@@ -60,16 +58,12 @@
                 <Font name="Apple Chancery" size="20.0" />
             </font>
         </TextField>
-        <Label id="grade" fx:id="grade" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Student Grade:" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="1000.0" AnchorPane.topAnchor="500.0">
+        <Label id="grade" fx:id="grade" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Student Class (optional):" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="1000.0" AnchorPane.topAnchor="530.0">
             <font>
                 <Font name="Apple Chancery" size="18.0" />
             </font>
         </Label>
-        <TextField id="sGrade" fx:id="sGrade" maxWidth="260.0" minWidth="260.0" prefHeight="50.0" prefWidth="260.0" style="-fx-pref-height: 10px; -fx-max-width: 200px; -fx-outline: none; -fx-border-bottom: groove; -fx-border-color: #112416 #112416; -fx-background-color: 172, 174, 176; -fx-padding: 10px, 10px; -fx-border-style: none; -fx-border-width: 0 0 2px;" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="600.0" AnchorPane.topAnchor="500.0">
-            <font>
-                <Font name="Apple Chancery" size="20.0" />
-            </font>
-        </TextField>
+      <ComboBox fx:id="comboClasses" minHeight="-Infinity" minWidth="260.0" onAction="#selectClass" prefHeight="60.0" prefWidth="260.0" promptText="Classes" style="-fx-background-color: white;" visibleRowCount="5" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="530.0" />
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="23.0" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: fbf6f6; -fx-border-width: 10px; -fx-border-style: solid; -fx-border-color: #112416;" text="Rocket Grading" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="50.0">
             <font>
                 <Font name="AppleMyungjo Regular" size="30.0" />
@@ -79,16 +73,16 @@
             </padding>
         </Label>
         <VBox fx:id="bottomBackground" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="1500.0" style="-fx-background-color: fbf6f6; -fx-border-width: 0px;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="600.0">
-            <Button id="create" fx:id="create" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#create" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Create" textAlignment="CENTER" textFill="#fffefe" >
+            <Button id="create" fx:id="create" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Create" textAlignment="CENTER" textFill="#fffefe">
                 <font>
                     <Font name="Apple Chancery" size="20.0" />
                 </font>
                 <VBox.margin>
-                    <Insets left="940.0" right="340.0" bottom="100.0" />
+                    <Insets bottom="100.0" left="940.0" right="340.0" />
                 </VBox.margin>
             </Button>
         </VBox>
-        <Button id="cancel" fx:id="cancel" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#cancel" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Cancel" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1200.0" AnchorPane.rightAnchor="100.0" AnchorPane.bottomAnchor="165.0">
+        <Button id="cancel" fx:id="cancel" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#cancel" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Cancel" textAlignment="CENTER" textFill="#fffefe" AnchorPane.bottomAnchor="165.0" AnchorPane.leftAnchor="1200.0" AnchorPane.rightAnchor="100.0">
             <font>
                 <Font name="Apple Chancery" size="20.0" />
             </font>

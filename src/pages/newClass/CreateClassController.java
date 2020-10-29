@@ -83,12 +83,12 @@ public class CreateClassController implements Initializable {
     public void done(ActionEvent event) throws SQLException, IOException { 
         validateClass();
         System.out.println(validateClass());
-        Parent dRoot = FXMLLoader.load(getClass().getResource("/pages/homePage/home.fxml"));
-        Scene dScene = new Scene(dRoot);
-        Stage fourthStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        fourthStage.setTitle("Home");
-        fourthStage.setScene(dScene);
-        fourthStage.show();
+//        Parent dRoot = FXMLLoader.load(getClass().getResource("/pages/homePage/home.fxml"));
+//        Scene dScene = new Scene(dRoot);
+//        Stage fourthStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        fourthStage.setTitle("Home");
+//        fourthStage.setScene(dScene);
+//        fourthStage.show();
         //pages.files.info.addClass(courseCode.getText());
     }
 
@@ -164,7 +164,7 @@ public class CreateClassController implements Initializable {
 
             }else{
                  showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
-        "Hello " + courseName.getText());
+        courseName.getText());
                  //loggerCourseName = queryResult.getString("username");
                  loggerClassId = queryResult.getInt("Class_Id");
                  if(loggerClasses.add(loggerClassId)==true){
