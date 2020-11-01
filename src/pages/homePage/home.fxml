@@ -18,7 +18,7 @@
             </image>
         </ImageView>
         <VBox fx:id="background" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1400.0" style="-fx-background-color: fbf6f6; -fx-border-width: 0px;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-            <Button id="signOut" fx:id="signOut" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#signOut" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Sign Out" textAlignment="CENTER" textFill="#fffefe">
+            <Button id="signOut" fx:id="signOut" layoutX="700.0" layoutY="307.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#signOut" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Sign Out" textAlignment="CENTER" textFill="#fffefe">
                 <font>
                     <Font name="Apple Chancery" size="18.0" />
                 </font>
@@ -26,10 +26,10 @@
                     <Insets bottom="5.0" left="5.0" right="2.0" top="1.0" />
                 </padding>
                 <VBox.margin>
-                    <Insets bottom="730.0" left="1150.0" />
+                    <Insets bottom="600.0" left="1150.0" />
                 </VBox.margin>
             </Button>
-           <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1900.0" style="-fx-background-color: #112416; -fx-border-width: 0px;"> 
+           <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="1500.0" style="-fx-background-color: #112416; -fx-border-width: 0px;"> 
         </Label>
         </VBox> 
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="1900.0" style="-fx-background-color: #112416; -fx-border-width: 0px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0"> 
@@ -40,12 +40,6 @@
             </font>
         </Button>
       <ComboBox fx:id="comboClasses" minHeight="-Infinity" onAction="#selectClass" prefHeight="50.0" prefWidth="400.0" promptText="Classes" style="-fx-background-color: white; -fx-font-size: 30;" visibleRowCount="5" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="300.0" />
-      <Button id="classes" fx:id="classes1" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Add Student" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="400.0">
-         <font>
-            <Font name="Apple Chancery" size="18.0" />
-         </font>
-      </Button>
-      <ComboBox fx:id="comboStudents" layoutX="530.0" layoutY="310.0" minHeight="-Infinity" onAction="#selectStudent" prefHeight="50.0" prefWidth="400.0" promptText="Students" style="-fx-background-color: white; -fx-font-size: 30;" visibleRowCount="5" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="400.0" />
         <Button id="createClass" fx:id="createClasses" alignment="CENTER" layoutX="700.0" layoutY="307.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#createClass" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Create a Classes" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1200.0" AnchorPane.topAnchor="600.0">
             <font>
                 <Font name="Apple Chancery" size="18.0" />

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -27,7 +28,7 @@
                             <Font name="Apple Chancery" size="24.0" />
                         </font>
                      <HBox.margin>
-                        <Insets left="200.0" top="200.0" />
+                        <Insets left="150.0" top="200.0" />
                      </HBox.margin>
                     </Label>
                   <TextField id="courseCode" fx:id="courseCode" minWidth="300.0" style="-fx-pref-height: 10px; -fx-max-width: 200px; -fx-outline: none; -fx-border-bottom: groove; -fx-border-color: #112416 #112416; -fx-background-color: transparent; -fx-padding: 10px, 10px; -fx-border-style: none; -fx-border-width: 0 0 2px;" text="">
@@ -47,7 +48,7 @@
                         <Font name="Apple Chancery" size="24.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="-50.0" right="100.0" top="50.0" />
+                        <Insets left="-100.0" right="100.0" top="50.0" />
                      </HBox.margin>
                   </Label>
                     <TextField id="courseCode" fx:id="courseName" minWidth="300.0" style="-fx-pref-height: 10px; -fx-max-width: 200px; -fx-outline: none; -fx-border-bottom: groove; -fx-border-color: #112416 #112416; -fx-background-color: transparent; -fx-padding: 10px, 10px; -fx-border-style: none; -fx-border-width: 0 0 2px;" text="">
@@ -63,20 +64,12 @@
                   <Insets left="250.0" top="50.0" />
                </VBox.margin>
             </HBox>
-            <Button id="addStudents" fx:id="btnAddClass" alignment="CENTER" mnemonicParsing="false" onAction="#addClass" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Add Class" textAlignment="CENTER" textFill="#fffefe">
+            <Button id="addStudents" fx:id="btnAddClass" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addClass" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Add Class" textAlignment="CENTER" textFill="#fffefe">
                <font>
                   <Font name="Apple Chancery" size="36.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="100.0" right="450.0" />
-               </VBox.margin>
-            </Button>
-            <Button id="addStudents" fx:id="ButtonDone" alignment="CENTER" mnemonicParsing="false" onAction="#done" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Done" textAlignment="CENTER" textFill="#fffefe">
-               <font>
-                  <Font name="Apple Chancery" size="36.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="40.0" left="850.0" />
+                  <Insets bottom="130.0" right="550.0" />
                </VBox.margin>
             </Button>
          </children>
@@ -86,11 +79,31 @@
                 <Font name="Apple Chancery" size="18.0" />
             </font>
         </Button>
-        <Button id="addStudents" fx:id="addStudents" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#addStudents" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Add Students" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="300.0">
-            <font>
-                <Font name="Apple Chancery" size="18.0" />
-            </font>
-        </Button>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="900.0">
+         <children>
+            <ComboBox fx:id="comboStudents" editable="true" minHeight="-Infinity" minWidth="-Infinity" onAction="#selectStudent" prefHeight="80.0" prefWidth="400.0" promptText="Students" style="-fx-background-color: white; -fx-font-size: 36;">
+               <VBox.margin>
+                  <Insets bottom="200.0" right="700.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Label fx:id="labelStudents" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="440.0" style="-fx-background-color: white;" text="Slected students" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+              <Button id="addStudents" fx:id="students" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addStudents" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Add Students" textAlignment="CENTER" textFill="#fffefe">
+                  <font>
+                      <Font name="Apple Chancery" size="36.0" />
+                  </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+              </Button>
+         </children>
+      </VBox>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="23.0" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: fbf6f6; -fx-border-width: 10px; -fx-border-style: solid; -fx-border-color: #112416;" text="Rocket Grading" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="50.0">
             <font>
                 <Font name="AppleMyungjo Regular" size="30.0" />
