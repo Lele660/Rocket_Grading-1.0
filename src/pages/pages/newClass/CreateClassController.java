@@ -64,12 +64,12 @@ public class CreateClassController implements Initializable {
     @FXML
     Label labelStudents;
     
-    String classCode;
-    String uName =pages.files.info.uName;
+    String classCode;//holds name of class code
+    String uName =pages.files.info.uName;//holds name of currently logged in user
     Stage dialogStage = new Stage();
     Scene scene;
-    ObservableList<String> comboItems = FXCollections.observableArrayList();
-    public ArrayList<Integer> studentIds = new ArrayList<>();
+    ObservableList<String> comboItems = FXCollections.observableArrayList();//holds all of students that belong to the users account
+    public ArrayList<Integer> studentIds = new ArrayList<>();//holds all of students that belong to the users account
     public static String labelStr ="";
     
     
@@ -117,7 +117,7 @@ public class CreateClassController implements Initializable {
         //pages.files.info.addClass(courseCode.getText());
     }
     */
-
+    //adds students to class
     public void addStudents(ActionEvent event) throws SQLException, IOException {
         String Students=labelStudents.getText();
         String s;
@@ -159,7 +159,7 @@ public class CreateClassController implements Initializable {
         comboStudents.setItems(comboItems);
         labelStudents.setText(labelStr);
     }
-
+    //adds class to classes theat belong to the currently logged in user
     public void addClass(ActionEvent event) throws SQLException, IOException{
         Node node = (Node)event.getSource();
         dialogStage = (Stage) node.getScene().getWindow();
@@ -250,7 +250,7 @@ public class CreateClassController implements Initializable {
         alert.show();
          
     }
-    
+    //diplays students that belong to the currently logged in user in the comboBox
     public int displayStudents() throws IOException{
         int rowCount = 0;
         /*
@@ -288,7 +288,7 @@ public class CreateClassController implements Initializable {
         }
         return rowCount;
     }
-    
+    //adds student to lable containing the slected students 
     public void selectStudent(ActionEvent event) throws SQLException, IOException{
         // when a name is selected from the list, add it to the label down below and save its student id to a list
         String s = (String) comboStudents.getValue();
@@ -335,7 +335,7 @@ public class CreateClassController implements Initializable {
        // System.out.println(labelStr);
         labelStudents.setText(labelStr);
     }
-    
+    //idk
     private void insertStudent(int studentId) throws IOException{
         /*
         try{

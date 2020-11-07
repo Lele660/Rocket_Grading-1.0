@@ -51,12 +51,12 @@ public class HomeClassPageController implements Initializable {
     @FXML
     Button assignments;
     
-    private TableView table = new TableView();
-    public String cCode=pages.homePage.HomeController.classCode;
-    ObservableList<String> data = FXCollections.observableArrayList();
-    TableColumn nameCol = new TableColumn("Student Name");
-    TableColumn gap = new TableColumn(" ");
-    TableColumn assignmentCol = new TableColumn("Assignments");
+    private TableView table = new TableView();//table that holds all of of the students names and their marks
+    public String cCode=pages.homePage.HomeController.classCode;//holds name of currently selected class
+    ObservableList<String> data = FXCollections.observableArrayList();//holds all of students names
+    TableColumn nameCol = new TableColumn("Student Name");//collum for TableView that holds student's names
+    TableColumn gap = new TableColumn(" ");//a gap collum so everything is spaced better
+    TableColumn assignmentCol = new TableColumn("Assignments");//collum for TableView that holds assignments and student's marks
     
     //brings user to login screen where they can login again if they wish
     public void signOut (ActionEvent event) throws SQLException, IOException {

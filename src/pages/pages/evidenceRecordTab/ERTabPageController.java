@@ -39,8 +39,9 @@ public class ERTabPageController implements Initializable {
     @FXML
     ComboBox<String> students;
     
-    ObservableList<String> comboItems = FXCollections.observableArrayList();
-    String classCode=pages.homePage.HomeController.classCode;
+    ObservableList<String> comboItems = FXCollections.observableArrayList();//holds names of students that can be selected
+    String classCode=pages.homePage.HomeController.classCode;//holds name of currently selected class
+    
     //brings user to login screen where they can login again if they wish
     public void signOut (ActionEvent event) throws SQLException, IOException {
         Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/pLogin/pLogin.fxml"));
@@ -78,6 +79,7 @@ public class ERTabPageController implements Initializable {
         secondaryStage.setScene(lScene);
         secondaryStage.show();
     }
+    //adds students to comboBox
     public void Students() throws IOException {
         int spot=0;
             while(spot<=pages.files.info.S.length()){
@@ -94,6 +96,7 @@ public class ERTabPageController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    //doesnt work yet
     public void selectStudent(){
         pages.evidenceRecord.evidenceRecord.main();
     }

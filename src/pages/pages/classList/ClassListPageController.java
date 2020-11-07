@@ -48,10 +48,9 @@ public class ClassListPageController implements Initializable {
     @FXML
     TableColumn nameCol;
     
-    public String cCode=pages.homePage.HomeController.classCode;
-    ArrayList<String> classList = new ArrayList<>();
-    ObservableList<String> studentsInClass = FXCollections.observableArrayList();
-    private SimpleStringProperty Name = new SimpleStringProperty("");
+    public String cCode=pages.homePage.HomeController.classCode;//holds to code of the class thats currently selected
+    ArrayList<String> classList = new ArrayList<>();//holds names of students enrolled in class
+    ObservableList<String> studentsInClass = FXCollections.observableArrayList();//holds names of students enrolled in class
 
      //brings user to login screen where they can login again if they wish
     public void signOut (ActionEvent event) throws SQLException, IOException {
@@ -63,6 +62,7 @@ public class ClassListPageController implements Initializable {
         secondaryStage.show();
         pages.files.info.logOut();
     }
+    //brings user to home screen
     public void home (ActionEvent event) throws SQLException, IOException {
         Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/homePage/home.fxml"));
         Scene lScene = new Scene(lRoot);
@@ -89,6 +89,7 @@ public class ClassListPageController implements Initializable {
         secondaryStage.setScene(lScene);
         secondaryStage.show();
     }
+    //brings user to adding students screen
     public void addStudent (ActionEvent event) throws SQLException, IOException {
         Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/newStudentsFromList/addStudents.fxml"));
         Scene lScene = new Scene(lRoot);
@@ -109,7 +110,8 @@ public class ClassListPageController implements Initializable {
 //        }catch(IOException e){
 //            
 //        }
-    }   
+    } 
+    //adds students to TableView
     public void students() throws IOException {
         int spot=0;
         String sName;

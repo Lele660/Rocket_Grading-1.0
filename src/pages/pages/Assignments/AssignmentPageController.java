@@ -71,6 +71,7 @@ public class AssignmentPageController implements Initializable {
         secondaryStage.setScene(lScene);
         secondaryStage.show();
     }
+    //brings user to the creating new assignments screen
     public void newAssignment (ActionEvent event) throws SQLException, IOException {
         Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/newAssignments/Create_Assignment.fxml"));
         Scene lScene = new Scene(lRoot);

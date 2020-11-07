@@ -60,11 +60,11 @@ public class HomeController implements Initializable {
     @FXML 
     ComboBox<String> comboClasses;
     
-    ArrayList<String> classList = new ArrayList<>();
-    ObservableList<String> comboItems = FXCollections.observableArrayList();
+    ArrayList<String> classList = new ArrayList<>();//holds the classes that belong to the user
+    ObservableList<String> comboItems = FXCollections.observableArrayList();//holds the classes that belong to the user
     public static int counter;
     public static int CLASS_ID;
-    public static String classCode;
+    public static String classCode;//holds name of selcted class
     
     //brings user to login screen where they can login again if they wish
     public void signOut (ActionEvent event) throws SQLException, IOException {
@@ -106,7 +106,8 @@ public class HomeController implements Initializable {
         }
         //comboClasses.setItems(comboItems);
         
-    }    
+    } 
+    //adds class to comboBox
     public void displayClasses() throws SQLException, IOException {
         /*
         try {
@@ -144,7 +145,7 @@ public class HomeController implements Initializable {
             }
         }
     }
-//    
+    //brings user to the homeClass page and sets selcted class to a variable   
     public void selectClass(ActionEvent event) throws IOException{
         String s = (String) comboClasses.getValue();
         /*

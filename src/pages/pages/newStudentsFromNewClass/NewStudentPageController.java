@@ -57,8 +57,8 @@ public class NewStudentPageController implements Initializable {
     @FXML
     ComboBox comboClasses;
      
-    String cCode=pages.homePage.HomeController.classCode;
-    ObservableList<String> comboItems = FXCollections.observableArrayList();
+    String cCode=pages.homePage.HomeController.classCode;//holds currently selected class
+    ObservableList<String> comboItems = FXCollections.observableArrayList();//holds all classes that belong to the user
     Stage dialogStage = new Stage();
     Scene scene;
     private static int TEMP_CLASS_ID;
@@ -116,7 +116,7 @@ public class NewStudentPageController implements Initializable {
         comboClasses.setItems(comboItems);
         
     }    
-    
+    //adds students to class
     public void addStudent(ActionEvent event)throws IOException{
 
         if (sFirstName.getText().isEmpty()) {
@@ -232,6 +232,7 @@ public class NewStudentPageController implements Initializable {
       return id;
     }
     */
+    //displays classes in comboBox
     public void displayClasses() throws SQLException, IOException {
 /*
         try {

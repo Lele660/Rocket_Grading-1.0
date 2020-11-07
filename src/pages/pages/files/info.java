@@ -115,7 +115,7 @@ public class info {
      public static void logOut(){
          uName=" ";
      }
-     //not sure
+     //returns name of a class at a certain line
      public static String className (int i) throws IOException{
          FileReader fr = new FileReader(C);
          BufferedReader br = new BufferedReader(fr);
@@ -137,7 +137,7 @@ public class info {
          }
          return null;
      }
-     
+     //returns line number of a certain class name
      public static int getClass (String n) throws IOException{
          FileReader fr = new FileReader(C);
          BufferedReader br = new BufferedReader(fr);
@@ -155,6 +155,7 @@ public class info {
          }
          return -1;
      }
+     //returns name of assignment at a certain line that belond=gs to a certain class
      public static String getAssignment (int i, String c) throws IOException{
          FileReader f = new FileReader(A);
          BufferedReader b = new BufferedReader(f);
@@ -194,7 +195,7 @@ public class info {
             System.out.println("An error occurred.");
         }
     }
-    
+    //returns name of students that are enrolled in class
     public static String getEnrolledStudnet(int i, String c) throws IOException{
         FileReader fr = new FileReader(S);
          BufferedReader br = new BufferedReader(fr);
@@ -216,6 +217,7 @@ public class info {
          }
          return null;
     }
+    //returns name of student who could be added to a class
     public static String getPossibleStudnet(int i) throws IOException{
         FileReader fr = new FileReader(S);
         BufferedReader br = new BufferedReader(fr);
@@ -239,6 +241,7 @@ public class info {
         }
         return null;
     }
+    //returns the name of student at a certain line
     public static int getStudnetID(String n) throws IOException{
         FileReader fr = new FileReader(S);
          BufferedReader br = new BufferedReader(fr);

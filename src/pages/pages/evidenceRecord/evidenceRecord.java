@@ -35,6 +35,7 @@ public class evidenceRecord extends Application{
     public void start(Stage stage) throws Exception {
         
     }
+    //creates evidence record
     public static void ER(){
         primaryStage.setTitle("GridPane Experiment");
         
@@ -47,6 +48,7 @@ public class evidenceRecord extends Application{
         labelOh.setMaxWidth(Double.POSITIVE_INFINITY);
         labelOh.setMaxHeight(Double.POSITIVE_INFINITY);
         
+        //creates levels lables
         Label labelR = new Label("       R       ");
         labelR.setStyle("-fx-background-color: #112416 #112416;");
         labelR.setTextFill(Color.web("#fffefe"));
@@ -87,6 +89,7 @@ public class evidenceRecord extends Application{
         label4_.setStyle("-fx-background-color: #112416 #112416;");
         label4_.setTextFill(Color.web("#fffefe"));
         
+        //creates spacers between levels(makes it easier to read)
         Label labelE = new Label("");
         labelE.setStyle("-fx-background-color: grey;");
         labelE.setMaxWidth(Double.POSITIVE_INFINITY);
@@ -184,7 +187,7 @@ public class evidenceRecord extends Application{
         //gridPane.setGridLinesVisible(true);
         gridPane.add(labelOv, 0, 1, 2, 29);
         gridPane.add(labelOh, 1, 0, 30, 2);
-        
+       
         gridPane.add(labelU1, 6, 2, 1, 1);
         gridPane.add(labelB, 7, 2, 1, 28);
         gridPane.add(labelA1, 8, 2, 1, 1);
@@ -197,6 +200,7 @@ public class evidenceRecord extends Application{
         gridPane.add(labelB4, 15, 2, 1, 28);
         gridPane.add(labelA3, 16, 2, 1, 1);
         
+        //adds levels and level spacers to gridPane
         gridPane.add(labelR, 2, 4, 1, 1);
         gridPane.add(labelE, 2, 5, 20, 1);
         gridPane.add(label_1, 2, 6, 1, 1);

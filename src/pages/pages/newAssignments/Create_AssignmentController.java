@@ -41,7 +41,6 @@ public class Create_AssignmentController {
     Button btnDone;
     @FXML
     Button btnHome;
-    
     @FXML
     TextArea tfDescription;
     @FXML
@@ -52,8 +51,10 @@ public class Create_AssignmentController {
     TextField tfWeight;
     Stage dialogStage = new Stage();
     Scene scene;
-    String cCode=pages.homePage.HomeController.classCode;
+    String cCode=pages.homePage.HomeController.classCode;//holds names of currently selcted class
+    
     //brings user to the assignments screen
+    //adds created assignment to the assignments that belong to the currently selcted class
     public void done (ActionEvent event) throws SQLException, IOException{
         /*
         try{
@@ -114,10 +115,4 @@ public class Create_AssignmentController {
         alert.show();
          
     }
-    
-    
-    
-    
-    
-    
 }
