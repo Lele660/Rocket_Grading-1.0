@@ -5,57 +5,44 @@
  */
 package admin;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author lelezhao
  */
-
-/*
-attributes:
-assignment type;
-assignment name;
-assignment description;
-assianment weight;
-*/
 public class Assignment {
-    private String type;
-    private String name;
-    private String description;
-    private int weight;
+    private final SimpleStringProperty name;
+    private final SimpleStringProperty type;
+    private final SimpleIntegerProperty id;
+ 
     
-    public Assignment(String type, String name,String description, int weight){
-        this.setType(type);
-        this.setName(name);
-        this.setDescription(description);
-        this.setWeight(weight);
+    public Assignment(String n, int d, String t){
+        this.name = new SimpleStringProperty(n);
+        this.id = new SimpleIntegerProperty(d);
+        this.type = new SimpleStringProperty(t);
+     
+   
     }
-    
-    public void setType(String type){
-        this.type = type;
+     public String getName() {
+        return name.get();
     }
-    public void setName(String name){
-        this.name= name;
+    public void setFirstName(String n) {
+        name.set(n);
+    }
         
+    public int getId() {
+        return id.get();
     }
-    public void setDescription(String des){
-        this.description = des;
-    }
-    public void setWeight(int weight){
-        this.weight = weight;
-    }
-    
-    public String getType(){
-        return this.type;
-    }
-    public String getName(){
-        return this.name;
-    
-    }
-    public String getDescription(){
-        return this.description;
-    }
-    public int getWeight(){
-        return this.weight;
+    public void setId(int n) {
+        id.set(n);
     }
     
+    public String getType() {
+        return type.get();
+    }
+    public void setType(String n) {
+        type.set(n);
+    }
 }

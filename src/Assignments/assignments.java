@@ -2,7 +2,7 @@
  * opens assignment page 
  * mainly used for testing
  */
-package pages.Assignments;
+package Assignments;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -5,7 +5,6 @@
  */
 package LoginPage;
 import admin.JdbcDao;
-import admin.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -88,7 +87,7 @@ public class LoginController implements Initializable {
         
         // TODO
     }    
-    private static void showAlert(Alert.AlertType alertType,String title, String message) {
+    public static void showAlert(Alert.AlertType alertType,String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -133,7 +132,7 @@ public class LoginController implements Initializable {
     public void signin(ActionEvent event) throws SQLException, IOException {
         if (username.getText().isEmpty() == false && password.getText().isEmpty() == false) {
             validateLogin();
-            User sample = new User(username.getText());
+            //User sample = new User(username.getText());
         }else{
             showAlert(Alert.AlertType.ERROR,"Something went wrong", "Please enter username and password");
         }

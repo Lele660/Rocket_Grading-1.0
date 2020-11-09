@@ -134,7 +134,7 @@ public class AddStudentsController implements Initializable {
 
             ps.executeUpdate();
             showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
-                    "This student has been added successfully");
+                    "This student has been added to the student database successfully");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -151,19 +151,29 @@ public class AddStudentsController implements Initializable {
                 if(id!=0){
                   JdbcDao jdbc2 = new JdbcDao();
                   Connection conn = jdbc2.getConnection();
-
-            
-                  String query = "INSERT INTO Enrollment(Student_id, Class_id) VALUES(?,?)";
-                  PreparedStatement ps = conn.prepareStatement(query); 
-                  ps.setInt(1,id);
-                  ps.setInt(2, TEMP_CLASS_ID);
+                  // check if the student has already been added to this class
+                  String qr = "select * from Rocket_Grading.Enrollment where Class_id = ? and Student_id = ?";
+                  PreparedStatement pps = conn.prepareStatement(qr);
+                  pps.setInt(1, TEMP_CLASS_ID);
+                  pps.setInt(2, id);
+                  ResultSet rs = pps.executeQuery();
                   
-                  ps.executeUpdate();
+                  if(rs.next()){
+                      showAlert(Alert.AlertType.ERROR, "Form Error!",
+                    "This student already exist in this class");
+                  }else{
+                    String query = "INSERT INTO Enrollment(Student_id, Class_id) VALUES(?,?)";
+                    PreparedStatement ps = conn.prepareStatement(query); 
+                    ps.setInt(1,id);
+                    ps.setInt(2, TEMP_CLASS_ID);
+                    ps.executeUpdate();
                 }  
+            }
             }catch(Exception e){
                 e.printStackTrace();
                 e.getCause();
             }
+            
         } else {
 
         //showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
@@ -270,6 +280,9 @@ public class AddStudentsController implements Initializable {
         }
         
     }
+    
+    
+    
 
    
     

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  *
  * @author vanessa
  */
-public class homeClass extends Application{
+public class home_Class extends Application{
     public static void main(String[] args) {
        launch(args);
     }

@@ -19,7 +19,7 @@
             <Image url="@../img/classroom.jpg" />
             </image>
         </ImageView>
-        <VBox fx:id="background" alignment="CENTER" layoutX="-486.0" layoutY="-368.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: fbf6f6; -fx-border-width: 0px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox fx:id="background" alignment="CENTER" layoutX="-486.0" layoutY="-368.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="900.0" minWidth="1500.0" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: fbf6f6; -fx-border-width: 0px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -31,7 +31,7 @@
                         <Insets left="150.0" top="200.0" />
                      </HBox.margin>
                     </Label>
-                  <TextField id="courseCode" fx:id="courseCode" minWidth="300.0" style="-fx-pref-height: 10px; -fx-max-width: 200px; -fx-outline: none; -fx-border-bottom: groove; -fx-border-color: #112416 #112416; -fx-background-color: transparent; -fx-padding: 10px, 10px; -fx-border-style: none; -fx-border-width: 0 0 2px;" text="">
+                  <TextField id="courseCode" fx:id="courseCode" minWidth="300.0" style="-fx-pref-height: 10px; -fx-max-width: 200px; -fx-outline: none; -fx-border-bottom: groove; -fx-border-color: #112416 #112416 #112416 #112416; -fx-background-color: transparent; -fx-padding: 10px, 10px; -fx-border-style: none; -fx-border-width: 0 0 2px;" text="">
                      <font>
                         <Font name="Apple Chancery" size="25.0" />
                      </font>

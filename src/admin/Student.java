@@ -5,40 +5,48 @@
  */
 package admin;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author lelezhao
  */
 public class Student {
-    private String firstName;
-    private String lastName;
-    private double grade;
+    private final SimpleStringProperty firstName;
+    private final SimpleStringProperty lastName;
+    private final SimpleIntegerProperty id;
+    private final SimpleStringProperty name;
+
     
-    
-   public Student(String first, String last, double grade){
-       this.setFirstName(first);
-       this.setLastName(last);
-       this.setGrade(grade);
-       
-   }
+    public Student(String n, String d, int num){
+        this.firstName = new SimpleStringProperty(n);
+        this.lastName = new SimpleStringProperty(d);
+        this.id = new SimpleIntegerProperty(num);
+        this.name = new SimpleStringProperty(firstName.get() + " " + lastName.get());
    
-   public void setGrade(double n){
-       this.grade = n;
-   }
-   public double getGrade(){
-       return this.grade;
-   }
-   public void setFirstName(String first){
-       this.firstName=first;
-   }
-   public void setLastName(String last){
-       this.lastName = last;
-   }
-   public String getLastName(){
-       return this.lastName;
-   }
-   public String getFirstName(){
-       return this.firstName;
-   }
-  
+    }
+     public String getFirstName() {
+        return firstName.get();
+    }
+    public void setFirstName(String n) {
+        firstName.set(n);
+    }
+        
+    public String getLastName() {
+        return lastName.get();
+    }
+    public void setLastName(String name) {
+        lastName.set(name);
+    }
+    public int getId(){
+        return id.get();
+    }
+    public void setId(int n){
+        id.set(n);
+    }
+    
+    public String getName(){
+        return name.get();
+    }
 }

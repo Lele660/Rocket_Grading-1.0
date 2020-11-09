@@ -2,7 +2,7 @@
  * opens class list page 
  * mainly used for testing
  */
-package pages.classList;
+package classList;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  *
  * @author vanessa
  */
-public class classList extends Application{
+public class class_List extends Application{
     public static void main(String[] args) {
        launch(args);
     }
