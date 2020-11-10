@@ -30,13 +30,10 @@ public class evidenceRecord extends Application{
     
     public static void main(String[] args) {
        launch(args);
-       try{
-        start();
-       }catch(Exception e){
-           
-       }
+       
     }
-    public static void start() throws Exception {
+    @Override
+    public void start(Stage stage) throws Exception {
 //        Parent newClassRoot = FXMLLoader.load(getClass().getResource("eRCHart.fxml"));
 //        Scene newClassScene = new Scene(newClassRoot);
 //        primaryStage.setTitle("Creating Assignment");
@@ -244,8 +241,5 @@ public class evidenceRecord extends Application{
         primaryStage.show();
     }*/
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
