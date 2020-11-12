@@ -2,8 +2,6 @@
  * Controlls eRTabPage.fxml
  * when buttons are pressed different things happen
  */
-
-
 package pages.evidenceRecordTab;
 
 import java.io.IOException;
@@ -28,7 +26,6 @@ import javafx.stage.Stage;
  *
  * @author vanessa
  */
-
 
 public class ERTabPageController implements Initializable {
     @FXML
@@ -100,31 +97,12 @@ public class ERTabPageController implements Initializable {
      * Initializes the controller class.
      */
     //doesnt work yet
-<<<<<<< HEAD
-
-
-//    public void selectStudent(){
-//        try{
-//            pages.evidenceRecord.evidence_Record.start();
-//        }catch(Exception e){
-//            
-//        }
-//    }
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        try{
-//            Students();
-//        }catch(IOException e){
-//            
-//        }
-//    }
-=======
     public void selectStudent(){
-//        try{
-//            pages.evidenceRecord.evidenceRecord.start();
-//        }catch(Exception e){
-//            
-//        }
+        try{
+            pages.evidenceRecord.evidenceRecord.ER();
+        }catch(Exception e){
+            
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -134,7 +112,5 @@ public class ERTabPageController implements Initializable {
             
         }
     }
->>>>>>> 3100b7ab8b1fe9a3d33e4f72a550594d4c63c7d1
     
 }
-
