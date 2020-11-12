@@ -2,8 +2,6 @@
  * Controlls eRTabPage.fxml
  * when buttons are pressed different things happen
  */
-
-
 package pages.evidenceRecordTab;
 
 import admin.JdbcDao;
@@ -40,6 +38,8 @@ import javafx.stage.Stage;
 
 
 public class erPageController implements Initializable {
+
+
     @FXML
     Button signout;
     @FXML
@@ -162,6 +162,21 @@ public class erPageController implements Initializable {
 //        }
 //    }
 
-   
+ 
+//    public void selectStudent(){
+//        try{
+//            pages.evidenceRecord.evidenceRecord.ER();
+//        }catch(Exception e){
+//            
+//        }
+//    }
+//    @Override
+//    public void initialize(URL url, ResourceBundle rb) {
+//        try{
+//            Students();
+//        }catch(IOException e){
+//            
+//        }
+//    }
+    
 }
-
