@@ -175,32 +175,32 @@ public class evidenceRecord extends Application{
         }
         
         //adds levels and level spacers to gridPane
-        gridPane.add(labelR, 4, 4, 1, 1);
+        gridPane.add(labelR, 4, 4, 1, 1);//row R
         gridPane.add(labelE, 4, 5, 100, 1);
-        gridPane.add(label_1, 4, 6, 1, 1);
-        gridPane.add(labelE1, 4, 7, 100, 1);
-        gridPane.add(label1, 4, 8, 1, 1);
-        gridPane.add(labelE2, 4, 9, 100, 1);
-        gridPane.add(label1_, 4, 10, 1, 1);
-        gridPane.add(labelE3, 4, 11, 100, 1);
-        gridPane.add(label_2, 4, 12, 1, 1);
-        gridPane.add(labelE4, 4, 13, 100, 1);
-        gridPane.add(label2, 4, 14, 1, 1);
-        gridPane.add(labelE5, 4, 15, 100, 1);
-        gridPane.add(label2_, 4, 16, 1, 1);
-        gridPane.add(labelE6, 4, 17, 100, 1);
-        gridPane.add(label_3, 4, 18, 1, 1);
-        gridPane.add(labelE7, 4, 19, 100, 1);
-        gridPane.add(label3, 4, 20, 1, 1);
-        gridPane.add(labelE8, 4, 21, 100, 1);
-        gridPane.add(label3_, 4, 22, 1, 1);
-        gridPane.add(labelE9, 4, 23, 100, 1);
-        gridPane.add(label_4, 4, 24, 1, 1);
-        gridPane.add(labelE10, 4, 25, 100, 1);
-        gridPane.add(label4, 4, 26, 1, 1);
-        gridPane.add(labelE11, 4, 27, 100, 1);
-        gridPane.add(label4_, 4, 28, 1, 1);
-        gridPane.add(labelE12, 4, 29, 100, 1);
+        gridPane.add(label_1, 4, 6, 1, 1);//row 1-
+        gridPane.add(labelE1, 4, 7, 100, 1);//row 1-/1
+        gridPane.add(label1, 4, 8, 1, 1);//row 1
+        gridPane.add(labelE2, 4, 9, 100, 1);//row 1/1+
+        gridPane.add(label1_, 4, 10, 1, 1);//row 1+
+        gridPane.add(labelE3, 4, 11, 100, 1);//row 1+/2-
+        gridPane.add(label_2, 4, 12, 1, 1);//row 2-
+        gridPane.add(labelE4, 4, 13, 100, 1);//row 2-/2
+        gridPane.add(label2, 4, 14, 1, 1);//row 2
+        gridPane.add(labelE5, 4, 15, 100, 1);//row 2/2+
+        gridPane.add(label2_, 4, 16, 1, 1);//row 2+
+        gridPane.add(labelE6, 4, 17, 100, 1);//row 2+/3-
+        gridPane.add(label_3, 4, 18, 1, 1);//row 3-
+        gridPane.add(labelE7, 4, 19, 100, 1);//row 3-/3
+        gridPane.add(label3, 4, 20, 1, 1);//row 3
+        gridPane.add(labelE8, 4, 21, 100, 1);//row 3/3+
+        gridPane.add(label3_, 4, 22, 1, 1);//row 3+
+        gridPane.add(labelE9, 4, 23, 100, 1);//row 3+/4-
+        gridPane.add(label_4, 4, 24, 1, 1);//row 4-
+        gridPane.add(labelE10, 4, 25, 100, 1);//row 4-/4
+        gridPane.add(label4, 4, 26, 1, 1);//row 4
+        gridPane.add(labelE11, 4, 27, 100, 1);//row 4/4+
+        gridPane.add(label4_, 4, 28, 1, 1);//row 4+
+        gridPane.add(labelE12, 4, 29, 100, 1);//row 4++
         
         Scene scene = new Scene(gridPane, 1200, 900);
         primaryStage.setScene(scene);
