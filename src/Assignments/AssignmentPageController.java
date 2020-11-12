@@ -49,6 +49,8 @@ public class AssignmentPageController implements Initializable {
     @FXML
     Button newAssignment;
     @FXML
+    Button  btnMark;
+    @FXML
     TableView tbp;
     @FXML
     TableView tbt;
@@ -62,10 +64,11 @@ public class AssignmentPageController implements Initializable {
     TableColumn assignment;
     
     //each observable list correspond with one of the tables 
-    ObservableList<Assignment> assignment_list = FXCollections.observableArrayList();
+    public static ObservableList<Assignment> ASSIGNMENT_LIST = FXCollections.observableArrayList();
     ObservableList<Assignment> t_presentations = FXCollections.observableArrayList();
     ObservableList<Assignment> t_tests = FXCollections.observableArrayList();
     ObservableList<Assignment> t_assignments = FXCollections.observableArrayList();
+    public static Assignment SELECTED_ASSIGNMENT;
     
     
      //brings user to login screen where they can login again if they wish
@@ -120,10 +123,11 @@ public class AssignmentPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     
+        getAssignments();
         display();
         
     }    
-    public void display(){
+    public static void getAssignments(){
         JdbcDao jdbc = new JdbcDao();
         Connection database = jdbc.getConnection();
         String sql ="select * from Rocket_Grading.Assignment where Class_Id = ?";
@@ -141,7 +145,7 @@ public class AssignmentPageController implements Initializable {
 
             }else{
                 while(qr.next()){
-                    assignment_list.add(new Assignment(qr.getString("Assignment_Name"),qr.getInt("Assignment_Id"),
+                    ASSIGNMENT_LIST.add(new Assignment(qr.getString("Assignment_Name"),qr.getInt("Assignment_Id"),
                     qr.getString("Assignment_Type")));
                 }
                  
@@ -151,6 +155,14 @@ public class AssignmentPageController implements Initializable {
             e.getCause();
             
         };
+        
+    
+        //for(Assignment a:assignment_list){
+          //  System.out.println(a.getName());
+        //}
+    }
+    
+    public void display(){
         sort();
         presentation.setCellValueFactory(
                 new PropertyValueFactory<Assignment, String>("name"));
@@ -161,25 +173,44 @@ public class AssignmentPageController implements Initializable {
         tba.setItems(t_assignments);
         tbp.setItems(t_presentations);
         tbt.setItems(t_tests);
-    
-        //for(Assignment a:assignment_list){
-          //  System.out.println(a.getName());
-        //}
     }
     
     public void sort(){
-        for(int i=0;i<assignment_list.size ();i++){
-            if(assignment_list.get(i).getType().equals("Presentation")){
-                t_presentations.add(assignment_list.get(i));
+        for(int i=0;i<ASSIGNMENT_LIST.size ();i++){
+            if(ASSIGNMENT_LIST.get(i).getType().equals("Presentation")){
+                t_presentations.add(ASSIGNMENT_LIST.get(i));
             }
-            else if(assignment_list.get(i).getType().equals("Tests")){
-                t_tests.add(assignment_list.get(i));
+            else if(ASSIGNMENT_LIST.get(i).getType().equals("Tests")){
+                t_tests.add(ASSIGNMENT_LIST.get(i));
             }
             else{
-                t_assignments.add(assignment_list.get(i));
+                t_assignments.add(ASSIGNMENT_LIST.get(i));
             }
         }
             
+    }
+    
+    public void mark (ActionEvent event)throws SQLException, IOException{
+       
+        if(tbp.getSelectionModel().getSelectedItem()!=null){
+            SELECTED_ASSIGNMENT= (Assignment) tbp.getSelectionModel().getSelectedItem();
+        }else if(tbt.getSelectionModel().getSelectedItem()!=null){
+            SELECTED_ASSIGNMENT = (Assignment) tbt.getSelectionModel().getSelectedItem();
+        }else if(tba.getSelectionModel().getSelectedItem()!=null){
+            SELECTED_ASSIGNMENT = (Assignment) tba.getSelectionModel().getSelectedItem();
+        } else{
+             showAlert(Alert.AlertType.ERROR, "Form Error!",
+                    "No assignment has been selected");
+        }
+        //System.out.println("selected name is " + SELECTED.getName());
+        
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/Grading/grading.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Grading Tab");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
+        
     }
     
     

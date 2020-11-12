@@ -15,10 +15,11 @@ import javafx.stage.Stage;
  *
  * @author vanessa
  */
-public class eR extends Application{
+public class evidenceRecord extends Application{
     public static void main(String[] args) {
        launch(args);
     }
+    
      @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Evidence Record Tab");

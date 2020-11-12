@@ -138,7 +138,7 @@ public class ClassListPageController implements Initializable {
             String sql ="select * from Rocket_Grading.Enrollment where Class_Id = ?";
             PreparedStatement statement = database.prepareStatement(sql);
             //System.out.println("class id is " + CLASS_ID);
-            statement.setInt(1,20);
+            statement.setInt(1,0);
            
 
             ResultSet queryResult = statement.executeQuery();
@@ -226,7 +226,7 @@ public class ClassListPageController implements Initializable {
             String sql = "delete from Enrollment where Student_id = ? and Class_id = ?";
             PreparedStatement statement = database.prepareStatement(sql);
             statement.setInt(1,id);
-            statement.setInt(2,20);
+            statement.setInt(2,CLASS_ID);
             statement.executeUpdate();
             showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
              "This person has been deleted successfully");
@@ -247,4 +247,3 @@ public class ClassListPageController implements Initializable {
     
     
     }
-

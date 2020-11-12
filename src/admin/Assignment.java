@@ -18,11 +18,12 @@ public class Assignment {
     private final SimpleIntegerProperty id;
  
     
+ 
+    
     public Assignment(String n, int d, String t){
         this.name = new SimpleStringProperty(n);
         this.id = new SimpleIntegerProperty(d);
         this.type = new SimpleStringProperty(t);
-     
    
     }
      public String getName() {

@@ -49,4 +49,9 @@ public class Student {
     public String getName(){
         return name.get();
     }
+    
+    @Override
+    public String toString(){
+        return this.name.get();
+    }
 }

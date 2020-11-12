@@ -2,12 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -18,7 +21,7 @@
             <Image url="@../img/classroom.jpg" />
             </image>
         </ImageView> 
-        <Button id="Home" fx:id="Home" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#home" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Home" textAlignment="CENTER" textFill="#fffefe" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0">
+        <Button id="Home" fx:id="btnHome" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Home" textAlignment="CENTER" textFill="#fffefe" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0">
             <font>
                 <Font name="Apple Chancery" size="18.0" />
             </font>
@@ -33,26 +36,81 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
         </Label>
-      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="180.0">
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="130.0">
          <children>
-            <Label minHeight="60.0" minWidth="400.0" text="Student Name:">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="10.0" minHeight="60.0" minWidth="400.0" text="Assignment Name:">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="tfAname" minHeight="60.0" minWidth="400.0" text="Assignment Name:">
+                     <font>
+                        <Font name="Didot" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tfAname" layoutX="10.0" layoutY="10.0" minHeight="60.0" minWidth="400.0" textFill="#d71818">
+                     <font>
+                        <Font name="Didot" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label minHeight="60.0" minWidth="400.0" text="Student Name:">
+                     <font>
+                        <Font name="Didot" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tfName" layoutX="10.0" layoutY="10.0" minHeight="60.0" minWidth="400.0" textFill="#d71818">
+                     <font>
+                        <Font name="Didot" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="-30.0" />
+               </VBox.margin>
+            </HBox>
+            <TableView fx:id="tb" editable="true" minHeight="450.0" minWidth="600.0" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="col_ex" editable="true" prefWidth="500.0" text="Expectations" />
+                <TableColumn fx:id="col_marks" editable="true" prefWidth="300.0" text="marks" />
+              </columns>
+               <VBox.margin>
+                  <Insets top="80.0" />
+               </VBox.margin>
+            </TableView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label minHeight="80.0" minWidth="320.0" text="Final Project Mark">
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Didot" size="36.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfMark" minHeight="80.0" minWidth="310.0" prefHeight="30.0" promptText="Enter mark here ">
+                     <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </TextField>
+                  <Button id="Home" fx:id="btnAdd" mnemonicParsing="false" onAction="#updateFinal" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Add" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font name="Apple Chancery" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <TableView minHeight="570.0" minWidth="600.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.topAnchor="320.0">
-        <columns>
-          <TableColumn editable="false" prefWidth="500.0" text="Expectations" />
-          <TableColumn editable="false" prefWidth="100.0" text="marks" />
-        </columns>
-      </TableView>
       <Button id="Home" fx:id="btnNext" layoutX="1280.0" layoutY="55.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Next Student" textAlignment="CENTER" textFill="#fffefe" AnchorPane.topAnchor="790.0">
          <font>
             <Font name="Apple Chancery" size="18.0" />
@@ -63,5 +121,11 @@
             <Font name="Apple Chancery" size="18.0" />
          </font>
       </Button>
+      <Button id="Home" fx:id="btnPrevious" layoutX="1290.0" layoutY="800.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Last Student" textAlignment="CENTER" textFill="#fffefe" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="790.0">
+         <font>
+            <Font name="Apple Chancery" size="18.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="comboStudents" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="260.0" onAction="#selectStudent" prefHeight="60.0" prefWidth="260.0" promptText="Students" style="-fx-background-color: white;" visibleRowCount="5" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="210.0" />
     </children>
 </AnchorPane>

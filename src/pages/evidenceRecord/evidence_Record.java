@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,6 +6,9 @@
  */
 package pages.evidenceRecord;
 
+import static Assignments.AssignmentPageController.ASSIGNMENT_LIST;
+import static Assignments.AssignmentPageController.getAssignments;
+import java.util.ArrayList;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -24,19 +28,19 @@ import javafx.stage.Stage;
  *
  * @author vanessa
  */
-public class evidenceRecord extends Application{
+public class evidence_Record extends Application{
+    ArrayList<Label> contents = new ArrayList<Label>();
+    ArrayList<Label> grey = new ArrayList<Label>();
+    
     
     static Stage primaryStage = new Stage();
     
     public static void main(String[] args) {
        launch(args);
-       try{
-        start();
-       }catch(Exception e){
-           
-       }
+       
     }
-    public static void start() throws Exception {
+    @Override
+    public void start(Stage stage) throws Exception {
 //        Parent newClassRoot = FXMLLoader.load(getClass().getResource("eRCHart.fxml"));
 //        Scene newClassScene = new Scene(newClassRoot);
 //        primaryStage.setTitle("Creating Assignment");
@@ -55,6 +59,7 @@ public class evidenceRecord extends Application{
         
         //creates levels lables
         Label labelR = new Label("       R       ");
+       
         labelR.setStyle("-fx-background-color: #112416 #112416;");
         labelR.setTextFill(Color.web("#fffefe"));
         Label label_1 = new Label("       1-      ");
@@ -94,9 +99,15 @@ public class evidenceRecord extends Application{
         label4_.setStyle("-fx-background-color: #112416 #112416;");
         label4_.setTextFill(Color.web("#fffefe"));
         
+        
+        
+        
+        
+        
         //creates spacers between levels(makes it easier to read)
         Label labelE = new Label("");
         labelE.setStyle("-fx-background-color: grey;");
+        
         labelE.setMaxWidth(Double.POSITIVE_INFINITY);
         labelE.setMaxHeight(Double.POSITIVE_INFINITY);
         Label labelE1 = new Label("");
@@ -152,10 +163,12 @@ public class evidenceRecord extends Application{
         //gridPane.setGridLinesVisible(true);
         gridPane.add(labelOv, 0, 1, 2, 29);
         gridPane.add(labelOh, 1, 0, 30, 2);
-        for(int i=6; i<17; i++){//fix the 17 to work with the database
-            gridPane.add(new Button(), 1, 0); // column=1 row=0
+        
+        getAssignments();
+        for(int i = 6; i<ASSIGNMENT_LIST.size()+6; i++){//fix the 17 to work with the database
+            //gridPane.add(new Button(), 1, 0); // column=1 row=0
             if(i%2==0){
-                Label labelP = new Label((String.valueOf(i)));
+                Label labelP = new Label((ASSIGNMENT_LIST.get(i-6).getName()));
                 labelP.setStyle("-fx-background-color: #112416 #112416;");
                 labelP.setTextFill(Color.web("#fffefe"));
                 gridPane.add(labelP, i, 2, 1, 1);
@@ -164,40 +177,44 @@ public class evidenceRecord extends Application{
                 label.setStyle("-fx-background-color: grey;");
                 label.setMaxWidth(Double.POSITIVE_INFINITY);
                 label.setMaxHeight(Double.POSITIVE_INFINITY);
-                gridPane.add(label, i, 2, 1, 1);
+                gridPane.add(label, i, 2, 1, 28);
             }
             String test= String.valueOf(i);
         }
         
         
+        for(int i = 2; i<60; i+=2){
+            
+        }
+        
         
         //adds levels and level spacers to gridPane
         gridPane.add(labelR, 2, 4, 1, 1);
-        gridPane.add(labelE, 2, 5, 20, 1);
-        gridPane.add(label_1, 2, 6, 1, 1);
-        gridPane.add(labelE1, 2, 7, 20, 1);
-        gridPane.add(label1, 2, 8, 1, 1);
-        gridPane.add(labelE2, 2, 9, 20, 1);
-        gridPane.add(label1_, 2, 10, 1, 1);
-        gridPane.add(labelE3, 2, 11, 20, 1);
-        gridPane.add(label_2, 2, 12, 1, 1);
-        gridPane.add(labelE4, 2, 13, 20, 1);
-        gridPane.add(label2, 2, 14, 1, 1);
-        gridPane.add(labelE5, 2, 15, 20, 1);
-        gridPane.add(label2_, 2, 16, 1, 1);
-        gridPane.add(labelE6, 2, 17, 20, 1);
-        gridPane.add(label_3, 2, 18, 1, 1);
-        gridPane.add(labelE7, 2, 19, 20, 1);
-        gridPane.add(label3, 2, 20, 1, 1);
-        gridPane.add(labelE8, 2, 21, 20, 1);
-        gridPane.add(label3_, 2, 22, 1, 1);
-        gridPane.add(labelE9, 2, 23, 20, 1);
-        gridPane.add(label_4, 2, 24, 1, 1);
-        gridPane.add(labelE10, 2, 25, 20, 1);
-        gridPane.add(label4, 2, 26, 1, 1);
-        gridPane.add(labelE11, 2, 27, 20, 1);
-        gridPane.add(label4_, 2, 28, 1, 1);
-        gridPane.add(labelE12, 2, 29, 20, 1);
+        gridPane.add(labelE, 2, 6, 20, 1);
+        gridPane.add(label_1, 2, 8, 1, 1);
+        gridPane.add(labelE1, 2, 10, 20, 1);
+        gridPane.add(label1, 2, 12, 1, 1);
+        gridPane.add(labelE2, 2, 14, 20, 1);
+        gridPane.add(label1_, 2, 16, 1, 1);
+        gridPane.add(labelE3, 2, 18, 20, 1);
+        gridPane.add(label_2, 2, 20, 1, 1);
+        gridPane.add(labelE4, 2, 22, 20, 1);
+        gridPane.add(label2, 2, 24, 1, 1);
+        gridPane.add(labelE5, 2, 26, 20, 1);
+        gridPane.add(label2_, 2, 28, 1, 1);
+        gridPane.add(labelE6, 2, 30, 20, 1);
+        gridPane.add(label_3, 2, 32, 1, 1);
+        gridPane.add(labelE7, 2, 34, 20, 1);
+        gridPane.add(label3, 2, 36, 1, 1);
+        gridPane.add(labelE8, 2, 38, 20, 1);
+        gridPane.add(label3_, 2, 40, 1, 1);
+        gridPane.add(labelE9, 2, 42, 20, 1);
+        gridPane.add(label_4, 2, 44, 1, 1);
+        gridPane.add(labelE10, 2, 46, 20, 1);
+        gridPane.add(label4, 2, 48, 1, 1);
+        gridPane.add(labelE11, 2, 50, 20, 1);
+        gridPane.add(label4_, 2, 52, 1, 1);
+        gridPane.add(labelE12, 2, 54, 20, 1);
         
         
         Scene scene = new Scene(gridPane, 1200, 900);
@@ -244,8 +261,8 @@ public class evidenceRecord extends Application{
         primaryStage.show();
     }*/
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
+    
+    
 }

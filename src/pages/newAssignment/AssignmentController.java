@@ -1,7 +1,14 @@
 package pages.newAssignment;
 
 
+import admin.Assignment;
+import admin.Assignment_Grade;
 import admin.JdbcDao;
+import admin.Student;
+import static classList.ClassListPageController2.ASSIGNMENT_MARK_ID;
+import static classList.ClassListPageController2.STUDENT_LIST;
+import static classList.ClassListPageController2.retrieveEnrollment;
+import static classList.ClassListPageController2.retrieveStudents;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -110,16 +117,19 @@ public class AssignmentController implements Initializable {
                 TEMP_ID =rs.getInt(1);
             }
             rs.close();
-
-
-            
             showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
              "This Assignment has been added to your class list.");
+            createGradeId(TEMP_ID);
 
             // insert expectations in this class
             for(Assignment_Expectation a: data){
-                insert(a);
+                for(int n:ASSIGNMENT_MARK_ID){
+                    insert(a,n);
+                }
+              
             }
+            
+            
         }catch(Exception e){
             e.printStackTrace();
             e.getCause();
@@ -152,10 +162,10 @@ public class AssignmentController implements Initializable {
     
     public void add(ActionEvent event)throws Exception{
         System.out.println(tfEdes.getText());
-        if(tfEdes.getText().equals("")){
-            showAlert(Alert.AlertType.WARNING, "Warning",
-             "Are you sure this assignment has no expectation description?");
-        }
+//        if(tfEdes.getText().equals("")){
+//            showAlert(Alert.AlertType.WARNING, "Warning",
+//             "Are you sure this assignment has no expectation description?");
+//        }
        //data.add(new Assignment_Expectation("test","test"));
        col_name.setCellValueFactory(
                 new PropertyValueFactory<Assignment_Expectation, String>("name"));
@@ -167,24 +177,21 @@ public class AssignmentController implements Initializable {
        tfEname.clear();
        tfEdes.clear();
     }
-    
-       
-    
-   
+
     
     
-    
-    public void insert(Assignment_Expectation item){
+    public void insert(Assignment_Expectation item, int id ){
         JdbcDao jdbc2 = new JdbcDao();
         Connection conn = jdbc2.getConnection();
         
-        String query = "INSERT INTO Assignment_Expectation(Expectation_name, Expectation_description, Assignment_id) VALUES(?,?,?)";
+        String query = "INSERT INTO Assignment_Expectation(Expectation_name, Expectation_description, Assignment_id, Assignment_grade_id) VALUES(?,?,?,?)";
         
         try{
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1,item.getName());
             statement.setString(2,item.getDes());
             statement.setInt(3,TEMP_ID);
+            statement.setInt(4,id);
             
             statement.executeUpdate();
         }
@@ -192,6 +199,45 @@ public class AssignmentController implements Initializable {
             e.printStackTrace();
             e.getCause();
         }   
+    }
+    
+    // add an assignment grade marking entry for each student in the class
+    //pass in the assiignment id that has just been created
+    public void createGradeId(int assignment_id) throws SQLException{
+        retrieveStudents();
+        retrieveEnrollment();
+        for (int i = 0; i<STUDENT_LIST.size();i++){
+            createGradeId(STUDENT_LIST.get(i),assignment_id);
+        }
+    }
+    /**
+     * 
+     * @param s student 
+     * @param a assignment id
+     */
+    public void createGradeId(Student s, int a){
+        JdbcDao jdbc2 = new JdbcDao();
+        Connection conn = jdbc2.getConnection();
+        try{
+            String qr = "INSERT INTO Assignment_grade(Assignment_id, Student_id) VALUES(?,?)";
+            PreparedStatement stmt = conn.prepareStatement(qr, Statement.RETURN_GENERATED_KEYS);
+            stmt.setInt(1,a);
+            stmt.setInt(2,s.getId());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                //System.out.println("you created one");
+                int grade_id = rs.getInt(1);
+                ASSIGNMENT_MARK_ID.add(grade_id);
+                //System.out.println("Grade id is " + grade_id);
+            } else {
+                System.out.println("no rows selected");
+            }
+            
+        }catch(Exception e ){
+            e.getCause();
+            e.printStackTrace();
+        }
     }
 
    

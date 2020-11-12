@@ -73,7 +73,7 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
         </Label>
-      <Button id="Home" fx:id="Mark" layoutX="1010.0" layoutY="55.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Mark" textAlignment="CENTER" textFill="#fffefe" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="640.0">
+      <Button id="Home" fx:id="btnMark" layoutX="1010.0" layoutY="55.0" mnemonicParsing="false" onAction="#mark" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Mark" textAlignment="CENTER" textFill="#fffefe" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="640.0">
          <font>
             <Font name="Apple Chancery" size="18.0" />
          </font>
