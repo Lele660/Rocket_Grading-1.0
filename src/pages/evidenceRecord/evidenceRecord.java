@@ -42,7 +42,7 @@ public class evidenceRecord extends Application{
         
     }
     //creates evidence record
-    public static void ER() throws Exception{
+    public void ER() throws Exception{
         primaryStage.setTitle("Evidence Record");
         
         Label labelOv = new Label("             ");//creates a border around chart
