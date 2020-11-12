@@ -262,7 +262,11 @@ public class evidence_Record extends Application{
     }*/
 
     
+<<<<<<< HEAD:src/pages/evidenceRecord/evidence_Record.java
     
     
     
 }
+=======
+}
+>>>>>>> 3100b7ab8b1fe9a3d33e4f72a550594d4c63c7d1:src/pages/evidenceRecord/evidenceRecord.java

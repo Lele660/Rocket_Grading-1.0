@@ -100,6 +100,7 @@ public class ERTabPageController implements Initializable {
      * Initializes the controller class.
      */
     //doesnt work yet
+<<<<<<< HEAD
 
 
 //    public void selectStudent(){
@@ -117,6 +118,23 @@ public class ERTabPageController implements Initializable {
 //            
 //        }
 //    }
+=======
+    public void selectStudent(){
+//        try{
+//            pages.evidenceRecord.evidenceRecord.start();
+//        }catch(Exception e){
+//            
+//        }
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        try{
+            Students();
+        }catch(IOException e){
+            
+        }
+    }
+>>>>>>> 3100b7ab8b1fe9a3d33e4f72a550594d4c63c7d1
     
 }
 
