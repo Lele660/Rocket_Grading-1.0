@@ -98,11 +98,11 @@ public class ERTabPageController implements Initializable {
      */
     //doesnt work yet
     public void selectStudent(){
-        try{
-            pages.evidenceRecord.evidenceRecord.start();
-        }catch(Exception e){
-            
-        }
+//        try{
+//            pages.evidenceRecord.evidenceRecord.start();
+//        }catch(Exception e){
+//            
+//        }
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
