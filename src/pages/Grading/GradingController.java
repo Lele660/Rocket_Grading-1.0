@@ -12,11 +12,10 @@ import admin.JdbcDao;
 import admin.Student;
 import admin.Assignment;
 import admin.Assignment_Grade;
-import classList.ClassListPageController2;
-import static classList.ClassListPageController2.ASSIGNMENT_MARK_ID;
-import static classList.ClassListPageController2.STUDENT_ID;
-import static classList.ClassListPageController2.STUDENT_LIST;
-import static classList.ClassListPageController2.retrieveStudents;
+import static classList.ClassListPageController.STUDENT_ID;
+import static classList.ClassListPageController.STUDENT_LIST;
+//import classList.ClassListPageController2;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -111,9 +110,9 @@ public class GradingController implements Initializable{
         
         //test 
        
-        for(int o:ASSIGNMENT_MARK_ID){
-            System.out.println("Assignment mark id is: " + o);
-        }
+//        for(int o:ASSIGNMENT_MARK_ID){
+//            System.out.println("Assignment mark id is: " + o);
+        //}
     }
     
     public void display() throws Exception {

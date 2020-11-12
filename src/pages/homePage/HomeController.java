@@ -161,7 +161,7 @@ public class HomeController implements Initializable {
     
     
     
-    public void selectClass(ActionEvent event){
+    public void selectClass(ActionEvent event) throws IOException{
         String s = comboClasses.getValue();
         String sCode = s.substring(0, s.indexOf(" "));
         String sName = s.substring(s.indexOf(" ")+1);
@@ -193,6 +193,13 @@ public class HomeController implements Initializable {
             e.getCause();
         }
         
+        
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/homeClass/homeClassPage.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Sign In");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
     }
 }
     

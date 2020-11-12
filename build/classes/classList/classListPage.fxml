@@ -75,12 +75,7 @@
                <children>
                   <TableView fx:id="table" minHeight="480.0" minWidth="1420.0" prefHeight="0.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="col_name" editable="false" minWidth="350.0" prefWidth="200.0" style="-fx-font-size: 26;" text="Name" />
-                      <TableColumn fx:id="col_assign" prefWidth="1000.0" text="Assignments">
-                           <columns>
-                              <TableColumn fx:id="col" minWidth="1010.0" prefWidth="900.0" text="placeholder" />
-                           </columns>
-                        </TableColumn>
+                      <TableColumn fx:id="col_name" editable="false" maxWidth="200.0" minWidth="350.0" prefWidth="200.0" style="-fx-font-size: 26;" text="Name" />
                     </columns>
                   </TableView>
                </children>

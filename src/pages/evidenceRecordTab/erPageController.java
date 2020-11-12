@@ -6,10 +6,19 @@
 
 package pages.evidenceRecordTab;
 
+import admin.JdbcDao;
+import admin.Student;
+import static classList.ClassListPageController.STUDENT_LIST;
+import static classList.ClassListPageController.retrieveEnrollment;
+import static classList.ClassListPageController.retrieveStudents;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,7 +39,7 @@ import javafx.stage.Stage;
  */
 
 
-public class ERTabPageController implements Initializable {
+public class erPageController implements Initializable {
     @FXML
     Button signout;
     @FXML
@@ -40,10 +49,13 @@ public class ERTabPageController implements Initializable {
     @FXML
     Button classList;
     @FXML
-    ComboBox<String> students;
+    ComboBox students;
     
-    ObservableList<String> comboItems = FXCollections.observableArrayList();//holds names of students that can be selected
-    String classCode=pages.homePage.HomeController.classCode;//holds name of currently selected class
+    
+    
+    public static Student CHOSEN = null;
+    ObservableList<Student> comboItems = FXCollections.observableArrayList();//holds names of students that can be selected
+    //String classCode=pages.homePage.HomeController.classCode;//holds name of currently selected class
     
     //brings user to login screen where they can login again if they wish
     public void signOut (ActionEvent event) throws SQLException, IOException {
@@ -66,7 +78,7 @@ public class ERTabPageController implements Initializable {
     }
      //brings user to the class list screen
     public void classList (ActionEvent event) throws SQLException, IOException {
-        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/classList/classListPage.fxml"));
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/classList/classListPage.fxml"));
         Scene lScene = new Scene(lRoot);
         Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         secondaryStage.setTitle("Class List");
@@ -75,7 +87,7 @@ public class ERTabPageController implements Initializable {
     }
     //brings user to the assignments screen
     public void assignments (ActionEvent event) throws SQLException, IOException {
-        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/Assignments/assignmentPage.fxml"));
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/Assignments/assignmentPage.fxml"));
         Scene lScene = new Scene(lRoot);
         Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         secondaryStage.setTitle("Assignments");
@@ -83,24 +95,55 @@ public class ERTabPageController implements Initializable {
         secondaryStage.show();
     }
     //adds students to comboBox
-    public void Students() throws IOException {
-        int spot=0;
-            while(spot<=pages.files.info.S.length()){
-                String comboItem =pages.files.info.getEnrolledStudnet(spot, classCode);
-                if(comboItem == null){
-                    spot++;
-                }else{
-                    comboItems.add(comboItem);
-                    spot++;
-                    students.setItems(comboItems);
-                }
-            }
+//    public void Students() throws IOException {
+//        int spot=0;
+//            while(spot<=pages.files.info.S.length()){
+//                String comboItem =pages.files.info.getEnrolledStudnet(spot, classCode);
+//                if(comboItem == null){
+//                    spot++;
+//                }else{
+//                    comboItems.add(comboItem);
+//                    spot++;
+//                    students.setItems(comboItems);
+//                }
+//            }
+//    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            displayStudents();
+        } catch (SQLException ex) {
+            //Logger.getLogger(erPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       students.setItems(comboItems);
     }
+    
+    public void displayStudents() throws SQLException{
+        Student comboItem = null;
+        retrieveEnrollment();
+        retrieveStudents();
+        for(Student s:STUDENT_LIST){
+            comboItem = s;
+        }
+        comboItems.add(comboItem);
+    }
+    
+    public void selectClass(ActionEvent event) throws IOException{
+        CHOSEN = (Student) students.getValue();
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/evidenceRecord/eRPage.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("evidence record");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
+       
+    }
+    
     /**
      * Initializes the controller class.
      */
     //doesnt work yet
-<<<<<<< HEAD
 
 
 //    public void selectStudent(){
@@ -118,23 +161,7 @@ public class ERTabPageController implements Initializable {
 //            
 //        }
 //    }
-=======
-    public void selectStudent(){
-//        try{
-//            pages.evidenceRecord.evidenceRecord.start();
-//        }catch(Exception e){
-//            
-//        }
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        try{
-            Students();
-        }catch(IOException e){
-            
-        }
-    }
->>>>>>> 3100b7ab8b1fe9a3d33e4f72a550594d4c63c7d1
-    
+
+   
 }
 

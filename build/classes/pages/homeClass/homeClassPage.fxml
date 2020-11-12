@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -29,7 +25,7 @@
                     <Insets bottom="5.0" left="5.0" right="2.0" top="1.0" />
                 </padding>
                 <VBox.margin>
-                    <Insets left="1150.0" bottom="730.0" />
+                    <Insets bottom="730.0" left="1150.0" />
                 </VBox.margin>
             </Button>
         </VBox> 
@@ -40,17 +36,17 @@
         </Button>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="1900.0" style="-fx-background-color: #112416; -fx-border-width: 0px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0"> 
         </Label>
-        <Button id="classList" fx:id="classList" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Class List" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1000.0" AnchorPane.topAnchor="250.0">
+        <Button id="classList" fx:id="classList" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#classList" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Class List" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1000.0" AnchorPane.topAnchor="250.0">
             <font>
                 <Font name="Apple Chancery" size="18.0" />
             </font>
         </Button>
-        <Button id="assignments" fx:id="assignments" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Assignments" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="525.0" AnchorPane.rightAnchor="525.0" AnchorPane.topAnchor="250.0">
+        <Button id="assignments" fx:id="assignments" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#assignments" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Assignments" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="525.0" AnchorPane.rightAnchor="525.0" AnchorPane.topAnchor="250.0">
             <font>
                 <Font name="Apple Chancery" size="18.0" />
             </font>
         </Button>
-        <Button id="evidenceRecord" fx:id="evidenceRecord" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Evidence Record" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="250.0">
+        <Button id="evidenceRecord" fx:id="evidenceRecord" alignment="CENTER" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" onAction="#evidenceRecord" prefHeight="80.0" prefWidth="300.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Evidence Record" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="250.0">
             <font>
                 <Font name="Apple Chancery" size="18.0" />
             </font>

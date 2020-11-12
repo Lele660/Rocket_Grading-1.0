@@ -50,7 +50,34 @@ public class HomeClassPageController implements Initializable {
         tertiaryStage.setTitle("Home");
         tertiaryStage.setScene(hScene);
         tertiaryStage.show();
+    }    
+     public void assignments (ActionEvent event) throws SQLException, IOException {
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/Assignments/assignmentPage.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Assignments");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
     }
+     
+      public void evidenceRecord (ActionEvent event) throws SQLException, IOException {
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/evidenceRecordTab/eRTabPage.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Evidence Record Tab");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
+    }
+       public void classList (ActionEvent event) throws SQLException, IOException {
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/classList/classListPage.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Class List");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
+       }
+       
+       
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -91,7 +91,7 @@ public class AssignmentPageController implements Initializable {
     }
     //brings user to the class list screen
     public void classList (ActionEvent event) throws SQLException, IOException {
-        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/classList/classListPage.fxml"));
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/classList/classListPage.fxml"));
         Scene lScene = new Scene(lRoot);
         Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         secondaryStage.setTitle("Class List");

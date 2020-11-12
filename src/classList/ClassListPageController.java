@@ -130,7 +130,7 @@ public class ClassListPageController implements Initializable {
         
     }    
     
-    private void retrieveEnrollment()throws SQLException{
+    public static void retrieveEnrollment()throws SQLException{
         
         try{
             JdbcDao jdbc = new JdbcDao();
@@ -138,7 +138,7 @@ public class ClassListPageController implements Initializable {
             String sql ="select * from Rocket_Grading.Enrollment where Class_Id = ?";
             PreparedStatement statement = database.prepareStatement(sql);
             //System.out.println("class id is " + CLASS_ID);
-            statement.setInt(1,0);
+            statement.setInt(1,CLASS_ID);
            
 
             ResultSet queryResult = statement.executeQuery();
@@ -168,7 +168,7 @@ public class ClassListPageController implements Initializable {
         }
     }
     
-    public void retrieveStudents() throws SQLException{
+    public static void retrieveStudents() throws SQLException{
         retrieveEnrollment();
         try{
             JdbcDao jdbc = new JdbcDao();
