@@ -5,10 +5,10 @@ import admin.Assignment;
 import admin.Assignment_Grade;
 import admin.JdbcDao;
 import admin.Student;
-import static classList.ClassListPageController2.ASSIGNMENT_MARK_ID;
-import static classList.ClassListPageController2.STUDENT_LIST;
-import static classList.ClassListPageController2.retrieveEnrollment;
-import static classList.ClassListPageController2.retrieveStudents;
+import static classList.ClassListPageController.STUDENT_LIST;
+import static classList.ClassListPageController.retrieveEnrollment;
+import static classList.ClassListPageController.retrieveStudents;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +20,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -90,8 +93,9 @@ public class AssignmentController implements Initializable {
    ObservableList<Assignment_Expectation> data = FXCollections.observableArrayList();
    ObservableList<String> types = FXCollections.observableArrayList(); 
    public static int TEMP_ID;
+   public static ObservableList<Integer> ASSIGNMENT_MARK_ID = FXCollections.observableArrayList();
     
-    public void done (ActionEvent event) throws SQLException{
+    public void done (ActionEvent event) throws SQLException, IOException{
 
         if(tfName.getText()==null || tfDescription.getText()==null || tfWeight.getText()==null){
             showAlert(Alert.AlertType.ERROR, "ERROR",
@@ -135,6 +139,13 @@ public class AssignmentController implements Initializable {
             e.getCause();
         }
         
+        //after the assignment is created successfully, go to assignment page
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/Assignments/assignmentPage.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Assignments");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
     }
     
     private static void showAlert(Alert.AlertType alertType,String title, String message) {

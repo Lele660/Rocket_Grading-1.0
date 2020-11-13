@@ -59,7 +59,7 @@
                 <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
             </padding>
         </Label>
-        <ComboBox fx:id="students" minHeight="-Infinity" prefHeight="60.0" prefWidth="400.0" promptText="Students" style="-fx-background-color: white; -fx-font-size: 30;" visibleRowCount="7" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="400.0" />
+        <ComboBox fx:id="students" minHeight="-Infinity" onAction="#selectStudent" prefHeight="60.0" prefWidth="400.0" promptText="Students" style="-fx-background-color: white; -fx-font-size: 30;" visibleRowCount="7" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="400.0" />
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="23.0" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: fbf6f6; -fx-border-width: 10px; -fx-border-style: solid; -fx-border-color: #112416;" text="Rocket Grading" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="50.0">
             <font>
                 <Font name="AppleMyungjo Regular" size="30.0" />

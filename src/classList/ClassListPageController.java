@@ -72,9 +72,9 @@ public class ClassListPageController implements Initializable {
     
 //    VBox box;
      //brings user to login screen where they can login again if they wish
-    public static ObservableList<String> STUDENT_NAME = FXCollections.observableArrayList();
-    public static ObservableList<Student> STUDENT_LIST = FXCollections.observableArrayList();
-    public static ArrayList<Integer> STUDENT_ID = new ArrayList<>();
+    public static final ObservableList<String> STUDENT_NAME = FXCollections.observableArrayList();
+    public static final ObservableList<Student> STUDENT_LIST = FXCollections.observableArrayList();
+    public static final ArrayList<Integer> STUDENT_ID = new ArrayList<>();
 
     public static int SELECTED_STUDENT;
     public void signOut (ActionEvent event) throws SQLException, IOException {
@@ -97,13 +97,12 @@ public class ClassListPageController implements Initializable {
     }
      //brings user to the assignments screen
     public void assignments (ActionEvent event) throws SQLException, IOException {
-        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/Assignments/assignmentPage.fxml"));
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/Assignments/assignmentPage.fxml"));
         Scene lScene = new Scene(lRoot);
         Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         secondaryStage.setTitle("Assignments");
         secondaryStage.setScene(lScene);
         secondaryStage.show();
-        pages.files.info.logOut();
     }
     //brings user to the evidence record tab screen
     public void evidenceRecord (ActionEvent event) throws SQLException, IOException {
@@ -117,9 +116,11 @@ public class ClassListPageController implements Initializable {
     }
     /**
      * Initializes the controller class.
+     * @param url
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+        public void initialize(URL url, ResourceBundle rb) {
+ 
         try {
             // TODO
 
@@ -131,7 +132,7 @@ public class ClassListPageController implements Initializable {
     }    
     
     public static void retrieveEnrollment()throws SQLException{
-        
+        STUDENT_ID.clear();
         try{
             JdbcDao jdbc = new JdbcDao();
             Connection database = jdbc.getConnection();
@@ -139,8 +140,6 @@ public class ClassListPageController implements Initializable {
             PreparedStatement statement = database.prepareStatement(sql);
             //System.out.println("class id is " + CLASS_ID);
             statement.setInt(1,CLASS_ID);
-           
-
             ResultSet queryResult = statement.executeQuery();
             if(queryResult==null){
                 System.out.println("wrong");
@@ -170,6 +169,7 @@ public class ClassListPageController implements Initializable {
     
     public static void retrieveStudents() throws SQLException{
         retrieveEnrollment();
+        STUDENT_LIST.clear();
         try{
             JdbcDao jdbc = new JdbcDao();
             Connection database = jdbc.getConnection();

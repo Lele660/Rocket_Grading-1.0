@@ -108,7 +108,7 @@ public class AssignmentPageController implements Initializable {
         secondaryStage.show();
     }
     public void newAssignment (ActionEvent event) throws SQLException, IOException {
-        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/newAssignments/Create_Assignment.fxml"));
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/newAssignment/Create_Assignment.fxml"));
         Scene lScene = new Scene(lRoot);
         Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         secondaryStage.setTitle("New Assignments");
@@ -128,6 +128,7 @@ public class AssignmentPageController implements Initializable {
         
     }    
     public static void getAssignments(){
+        ASSIGNMENT_LIST.clear();
         JdbcDao jdbc = new JdbcDao();
         Connection database = jdbc.getConnection();
         String sql ="select * from Rocket_Grading.Assignment where Class_Id = ?";
@@ -137,7 +138,8 @@ public class AssignmentPageController implements Initializable {
         try{
             PreparedStatement statement = database.prepareStatement(sql);
             statement.setInt(1,CLASS_ID);
-
+            System.out.println("CLASS ID IS " + CLASS_ID);
+            
             ResultSet qr = statement.executeQuery();
             if(qr==null){
                 showAlert(Alert.AlertType.ERROR,"",

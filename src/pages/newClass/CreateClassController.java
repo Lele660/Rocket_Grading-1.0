@@ -6,7 +6,6 @@
 package pages.newClass;
 
 import admin.JdbcDao;
-import admin.User;
 import LoginPage.LoginController;
 import static LoginPage.LoginController.loggerId;
 import java.io.IOException;
@@ -80,7 +79,6 @@ public class CreateClassController implements Initializable {
         secondaryStage.setTitle("Sign In");
         secondaryStage.setScene(lScene);
         secondaryStage.show();
-        pages.files.info.logOut();
     }
 
     public void home(ActionEvent event) throws SQLException, IOException {
@@ -118,8 +116,14 @@ public class CreateClassController implements Initializable {
         for(int i =0; i<studentIds.size(); i++){
             insertStudent(studentIds.get(i));
             //System.out.println(studentIds.get(i));
-            
         }
+        
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/homeCLass/homeClassPage.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Home Class");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
     }
 
     @Override
@@ -184,12 +188,10 @@ public class CreateClassController implements Initializable {
             PreparedStatement statement = database.prepareStatement(sql);
             statement.setString(1,courseName.getText());
             statement.setString(2,courseCode.getText());
-
             ResultSet queryResult = statement.executeQuery();
             if(!queryResult.next()){
                 showAlert(Alert.AlertType.ERROR,"Something went wrong",
                             "course was not added successfully");
-
             }else{
                  showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
         courseName.getText());
@@ -319,6 +321,7 @@ public class CreateClassController implements Initializable {
             
             if(rs.next()){
                 id = rs.getInt("Class_Id");
+                CLASS_ID = id;
                 
             }else{
                 System.out.println("wrong");

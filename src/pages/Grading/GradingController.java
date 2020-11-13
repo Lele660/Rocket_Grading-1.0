@@ -14,6 +14,8 @@ import admin.Assignment;
 import admin.Assignment_Grade;
 import static classList.ClassListPageController.STUDENT_ID;
 import static classList.ClassListPageController.STUDENT_LIST;
+import static classList.ClassListPageController.retrieveEnrollment;
+import static classList.ClassListPageController.retrieveStudents;
 //import classList.ClassListPageController2;
 
 import java.io.IOException;
@@ -48,6 +50,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.stage.Stage;
 
+
 /**
  *
  * @author lelezhao
@@ -76,7 +79,6 @@ public class GradingController implements Initializable{
     @FXML
     TextField tfMark;
     final ObservableList<Expectation> EXPECTATIONS = FXCollections.observableArrayList();
-    final ObservableList<String> student_names = FXCollections.observableArrayList();
     public static Student SELECTED_STUDENT;
     private int grade_id;
 
@@ -115,6 +117,15 @@ public class GradingController implements Initializable{
         //}
     }
     
+    public void classHome(ActionEvent event) throws IOException{
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/homeClass/homeClassPage.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Home");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
+    }
+    
     public void display() throws Exception {
         //tb.refresh();
         //tb.getItems().clear();
@@ -145,6 +156,7 @@ public class GradingController implements Initializable{
     }
    
     public void getExpectations() {
+        EXPECTATIONS.clear();
         try {
             JdbcDao jdbc = new JdbcDao();
             Connection database = jdbc.getConnection();
@@ -182,93 +194,13 @@ public class GradingController implements Initializable{
         }
     }
     
-    public void retrieveEnrollment()throws SQLException{
-        
-        try{
-            JdbcDao jdbc = new JdbcDao();
-            Connection database = jdbc.getConnection();
-            String sql ="select * from Rocket_Grading.Enrollment where Class_Id = ?";
-            PreparedStatement statement = database.prepareStatement(sql);
-            //System.out.println("class id is " + CLASS_ID);
-            statement.setInt(1,0);
-           
-
-            ResultSet queryResult = statement.executeQuery();
-            if(queryResult==null){
-                System.out.println("wrong");
-                
-            }else{
-                // add all the student ids in the table to a static list
-                while(queryResult.next()){
-                    int id = queryResult.getInt("Student_id");
-                    //System.out.println("student id is " + id);
-                    STUDENT_ID.add(id);
-                    
-                }
-            }
-                 
-        }catch(Exception e){
-                e.printStackTrace();
-                e.getCause();
-            
-                }
+    
         //test
 //        
         //System.out.println("number of terms " + STUDENT_ID.size());
-        for(int id:STUDENT_ID){
-            //System.out.println(id);
-        }
-    }
-    
-    public void retrieveStudents() throws SQLException{
-        retrieveEnrollment();
-        try{
-            JdbcDao jdbc = new JdbcDao();
-            Connection database = jdbc.getConnection();
-            
-            for(int i = 0; i<STUDENT_ID.size(); i++){
-                String sql ="select * from Rocket_Grading.Student_info where Student_id = ?";
-                PreparedStatement statement = database.prepareStatement(sql);
-                statement.setInt(1,STUDENT_ID.get(i));
-                ResultSet queryResult = statement.executeQuery();
-                if(queryResult==null){
-                    System.out.println("wrong");
-           
-                }else{
-                // add all the student names in the table to a static list
-                    while(queryResult.next()){
-                        String fName = queryResult.getString("First_name");
-                        String lName = queryResult.getString(("Last_name"));
-                        int id = queryResult.getInt("Student_id");
-                        //String name = fName + " " + lName;
-                        STUDENT_LIST.add(new Student(fName,lName,id));    
-                    }
-                }
-            }
-         
-        }catch(Exception e){
-                e.printStackTrace();
-                e.getCause();
-         }
-        /*
-        testing
-        */
-        for(Student s:STUDENT_LIST){
-            String name = s.getName();
-            student_names.add(name);
-            //System.out.println(s.getFirstName());
-        }
         
-    }
-//    public void goNext(ActionEvent event){
-//        
-//        
-//    }
-//    
-//    public void goLast(ActionEvent event){
-//        
-//        
-//    }
+    
+    
     
     public void selectStudent(ActionEvent event) throws IOException, Exception{
         // get the sleected student and pass in its student id 
@@ -316,10 +248,11 @@ public class GradingController implements Initializable{
         try{
             PreparedStatement statement = conn.prepareStatement(qry);
             statement.setString(1,tfMark.getText());
-            System.out.println("tf mark is " + tfMark.getText());
+            //System.out.println("tf mark is " + tfMark.getText());
             statement.setInt(2,grade_id);
             statement.executeUpdate();
-            System.out.println("did it");
+            tfMark.clear();
+            //System.out.println("did it");
         }
         catch(Exception e){
             e.printStackTrace();
@@ -376,8 +309,13 @@ public class GradingController implements Initializable{
 //       
 //        
 //    }
+    /**
+     * get window to display the student's name and assignment name
+     * @param s
+     * @param a 
+     */
     public void initWindow(Student s, Assignment a){
-         tfName.setText( s.toString());
+        tfName.setText(s.toString());
         //tfName.textProperty().bind(tfName.textProperty());
         //System.out.println("number of students " + STUDENT_LIST.size());
         tfAname.setText(a.getName());

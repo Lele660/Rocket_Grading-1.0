@@ -20,12 +20,7 @@
             <image>
             <Image url="@../img/classroom.jpg" />
             </image>
-        </ImageView> 
-        <Button id="Home" fx:id="btnHome" layoutX="700.0" layoutY="307.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Home" textAlignment="CENTER" textFill="#fffefe" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0">
-            <font>
-                <Font name="Apple Chancery" size="18.0" />
-            </font>
-        </Button>
+        </ImageView>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="1900.0" style="-fx-background-color: #112416; -fx-border-width: 0px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="300.0"> 
         </Label>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="23.0" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: fbf6f6; -fx-border-width: 10px; -fx-border-style: solid; -fx-border-color: #112416;" text="Rocket Grading" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1100.0" AnchorPane.topAnchor="50.0">
@@ -111,17 +106,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button id="Home" fx:id="btnNext" layoutX="1280.0" layoutY="55.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Next Student" textAlignment="CENTER" textFill="#fffefe" AnchorPane.topAnchor="790.0">
-         <font>
-            <Font name="Apple Chancery" size="18.0" />
-         </font>
-      </Button>
-      <Button id="Home" fx:id="btnClass" layoutX="1280.0" layoutY="55.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Class Home" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1070.0" AnchorPane.topAnchor="45.0">
-         <font>
-            <Font name="Apple Chancery" size="18.0" />
-         </font>
-      </Button>
-      <Button id="Home" fx:id="btnPrevious" layoutX="1290.0" layoutY="800.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Last Student" textAlignment="CENTER" textFill="#fffefe" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="790.0">
+      <Button id="Home" fx:id="btnClass" layoutX="1280.0" layoutY="55.0" mnemonicParsing="false" onAction="#classHome" prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #112416 #112416; -fx-border-radius: 0;" text="Class Home" textAlignment="CENTER" textFill="#fffefe" AnchorPane.leftAnchor="1270.0" AnchorPane.topAnchor="45.0">
          <font>
             <Font name="Apple Chancery" size="18.0" />
          </font>

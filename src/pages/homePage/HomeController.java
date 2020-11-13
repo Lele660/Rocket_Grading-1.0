@@ -62,7 +62,7 @@ public class HomeController implements Initializable {
     ArrayList<String> classList = new ArrayList<>();
     ObservableList<String> comboItems = FXCollections.observableArrayList();
     public static int counter;
-    public static int CLASS_ID;
+    public static int CLASS_ID =0;
     
     public void signOut (ActionEvent event) throws SQLException, IOException {
         Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/login/login.fxml"));
@@ -132,7 +132,7 @@ public class HomeController implements Initializable {
         }
         comboClasses.setItems(comboItems);
         
-    }    
+    }   
     
     public void displayClasses() throws SQLException {
 
@@ -184,7 +184,7 @@ public class HomeController implements Initializable {
             }
             else{
                 CLASS_ID = rs.getInt("Class_Id");
-                System.out.println(CLASS_ID);
+                System.out.println("Class id is " + CLASS_ID);
             }
             
             
@@ -194,10 +194,11 @@ public class HomeController implements Initializable {
         }
         
         
+        
         Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/homeClass/homeClassPage.fxml"));
         Scene lScene = new Scene(lRoot);
         Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        secondaryStage.setTitle("Sign In");
+        secondaryStage.setTitle("Home");
         secondaryStage.setScene(lScene);
         secondaryStage.show();
     }

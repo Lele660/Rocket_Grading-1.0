@@ -16,8 +16,10 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -75,8 +77,19 @@ public class LoginController implements Initializable {
             return;
         }
         createUser();
-        showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
+        if(validateLogin()){
+            showAlert(Alert.AlertType.CONFIRMATION, "Congrats",
         "Resgistration successful " + username.getText());
+        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/homePage/home.fxml"));
+        Scene lScene = new Scene(lRoot);
+        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        secondaryStage.setTitle("Sign In");
+        secondaryStage.setScene(lScene);
+        secondaryStage.show();
+        }
+        
+        
+        
 
     }
     @Override
@@ -96,7 +109,8 @@ public class LoginController implements Initializable {
     }
     
     
-    public void validateLogin(){
+    public boolean validateLogin(){
+        loggerId = 0;
         JdbcDao jdbc = new JdbcDao();
         Connection database = jdbc.getConnection();
         String sql ="select * from Rocket_Grading.User where username = ? and password = ?";
@@ -118,7 +132,7 @@ public class LoginController implements Initializable {
         "welcome back " + username.getText());
                  loggerUsername = queryResult.getString("username");
                  loggerId = queryResult.getInt("UserId");
-                 
+                 return true;
             }
             
         }catch(Exception e){
@@ -126,12 +140,21 @@ public class LoginController implements Initializable {
             e.getCause();
             
         };
-    
+    return false;
     }
     
     public void signin(ActionEvent event) throws SQLException, IOException {
         if (username.getText().isEmpty() == false && password.getText().isEmpty() == false) {
-            validateLogin();
+            if (validateLogin()) {
+                Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/homePage/home.fxml"));
+                Scene lScene = new Scene(lRoot);
+                Stage secondaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                secondaryStage.setTitle("Sign In");
+                secondaryStage.setScene(lScene);
+                secondaryStage.show();
+            }
+
+
             //User sample = new User(username.getText());
         }else{
             showAlert(Alert.AlertType.ERROR,"Something went wrong", "Please enter username and password");

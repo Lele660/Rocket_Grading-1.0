@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,37 +5,49 @@
  */
 package pages.evidenceRecord;
 
-import static Assignments.AssignmentPageController.ASSIGNMENT_LIST;
-import static Assignments.AssignmentPageController.getAssignments;
-import java.util.ArrayList;
+import admin.JdbcDao;
+import admin.Student;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+//import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import static pages.evidenceRecordTab.erPageController.CHOSEN;
+import static pages.homePage.HomeController.CLASS_ID;
 
 /**
  *
  * @author vanessa
  */
 public class evidence_Record extends Application{
-    ArrayList<Label> contents = new ArrayList<Label>();
-    ArrayList<Label> grey = new ArrayList<Label>();
-    
-    
+    public Map <String,String> assGrade = new HashMap<>();
+    public String assignments;
     static Stage primaryStage = new Stage();
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
        launch(args);
+       
        
     }
     @Override
@@ -46,20 +57,31 @@ public class evidence_Record extends Application{
 //        primaryStage.setTitle("Creating Assignment");
 //        primaryStage.setScene(newClassScene);
 //        primaryStage.show();
-        primaryStage.setTitle("GridPane Experiment");
         
-        Label labelOv = new Label("             ");
+    }
+    //creates evidence record
+    public void ER() throws Exception{
+        display();
+        primaryStage.setTitle("Evidence Record");
+        
+        Label labelOv = new Label("             ");//creates a border around chart
         labelOv.setStyle("-fx-background-color: white;");
         labelOv.setMaxWidth(Double.POSITIVE_INFINITY);
         labelOv.setMaxHeight(Double.POSITIVE_INFINITY);
-        Label labelOh = new Label("          ");
+        Label labelOh = new Label("          ");//creates a border around chart
         labelOh.setStyle("-fx-background-color: white;");
         labelOh.setMaxWidth(Double.POSITIVE_INFINITY);
         labelOh.setMaxHeight(Double.POSITIVE_INFINITY);
+        Label labelInfo = new Label(" ");//edit to have student information
+        
         
         //creates levels lables
+        Label name = new Label(getName());
+        Label className = new Label(getClassName());
+        name.setStyle("-fx-background-color: #112416 #112416;");
+        className.setTextFill(Color.web("#fffefe"));
+        
         Label labelR = new Label("       R       ");
-       
         labelR.setStyle("-fx-background-color: #112416 #112416;");
         labelR.setTextFill(Color.web("#fffefe"));
         Label label_1 = new Label("       1-      ");
@@ -99,15 +121,9 @@ public class evidence_Record extends Application{
         label4_.setStyle("-fx-background-color: #112416 #112416;");
         label4_.setTextFill(Color.web("#fffefe"));
         
-        
-        
-        
-        
-        
         //creates spacers between levels(makes it easier to read)
         Label labelE = new Label("");
         labelE.setStyle("-fx-background-color: grey;");
-        
         labelE.setMaxWidth(Double.POSITIVE_INFINITY);
         labelE.setMaxHeight(Double.POSITIVE_INFINITY);
         Label labelE1 = new Label("");
@@ -161,103 +177,305 @@ public class evidence_Record extends Application{
         
         GridPane gridPane = new GridPane();
         //gridPane.setGridLinesVisible(true);
-        gridPane.add(labelOv, 0, 1, 2, 29);
-        gridPane.add(labelOh, 1, 0, 30, 2);
+        gridPane.add(labelInfo, 0, 0, 1, 1);
+        gridPane.add(labelOv, 0, 1, 4, 300);
+        gridPane.add(labelOh, 1, 0, 300, 4);
         
-        getAssignments();
-        for(int i = 6; i<ASSIGNMENT_LIST.size()+6; i++){//fix the 17 to work with the database
-            //gridPane.add(new Button(), 1, 0); // column=1 row=0
-            if(i%2==0){
-                Label labelP = new Label((ASSIGNMENT_LIST.get(i-6).getName()));
-                labelP.setStyle("-fx-background-color: #112416 #112416;");
-                labelP.setTextFill(Color.web("#fffefe"));
-                gridPane.add(labelP, i, 2, 1, 1);
-            }else{
-                Label label = new Label("  ");
-                label.setStyle("-fx-background-color: grey;");
-                label.setMaxWidth(Double.POSITIVE_INFINITY);
-                label.setMaxHeight(Double.POSITIVE_INFINITY);
-                gridPane.add(label, i, 2, 1, 28);
-            }
+        int i=7;
+        int j=0;
+        while(j<assGrade.size()){//fix the 17 to work with the database
+            Label labelP = new Label((String) assGrade.keySet().toArray()[j]);//edit
+            System.out.println((String) assGrade.keySet().toArray()[j]);
+            System.out.println(i-7);
+            labelP.setStyle("-fx-background-color: #112416 #112416;");
+            labelP.setTextFill(Color.web("#fffefe"));
+            gridPane.add(labelP, i-1, 4, 1, 1);
+            System.out.println(i-1);
+            Label label = new Label("    ");
+            label.setStyle("-fx-background-color: grey;");
+            label.setMaxWidth(Double.POSITIVE_INFINITY);
+            label.setMaxHeight(Double.POSITIVE_INFINITY);
+            gridPane.add(label, i, 4, 1, 28);
+            System.out.println(i);
             String test= String.valueOf(i);
+            j++;
+            System.out.println(i);
+            System.out.println(" ");
+            i+=2;
+            //System.out.println("j is " + j);
         }
-        
-        
-        for(int i = 2; i<60; i+=2){
-            
-        }
-        
+        System.out.println("size is " + assGrade.size());
         
         //adds levels and level spacers to gridPane
-        gridPane.add(labelR, 2, 4, 1, 1);
-        gridPane.add(labelE, 2, 6, 20, 1);
-        gridPane.add(label_1, 2, 8, 1, 1);
-        gridPane.add(labelE1, 2, 10, 20, 1);
-        gridPane.add(label1, 2, 12, 1, 1);
-        gridPane.add(labelE2, 2, 14, 20, 1);
-        gridPane.add(label1_, 2, 16, 1, 1);
-        gridPane.add(labelE3, 2, 18, 20, 1);
-        gridPane.add(label_2, 2, 20, 1, 1);
-        gridPane.add(labelE4, 2, 22, 20, 1);
-        gridPane.add(label2, 2, 24, 1, 1);
-        gridPane.add(labelE5, 2, 26, 20, 1);
-        gridPane.add(label2_, 2, 28, 1, 1);
-        gridPane.add(labelE6, 2, 30, 20, 1);
-        gridPane.add(label_3, 2, 32, 1, 1);
-        gridPane.add(labelE7, 2, 34, 20, 1);
-        gridPane.add(label3, 2, 36, 1, 1);
-        gridPane.add(labelE8, 2, 38, 20, 1);
-        gridPane.add(label3_, 2, 40, 1, 1);
-        gridPane.add(labelE9, 2, 42, 20, 1);
-        gridPane.add(label_4, 2, 44, 1, 1);
-        gridPane.add(labelE10, 2, 46, 20, 1);
-        gridPane.add(label4, 2, 48, 1, 1);
-        gridPane.add(labelE11, 2, 50, 20, 1);
-        gridPane.add(label4_, 2, 52, 1, 1);
-        gridPane.add(labelE12, 2, 54, 20, 1);
+        gridPane.add(labelR, 4, 5, 1, 1);//row R
+        gridPane.add(labelE, 4, 6, 100, 1);
+        gridPane.add(label_1, 4, 7, 1, 1);//row 1-
+        gridPane.add(labelE1, 4, 8, 100, 1);//row 1-/1
+        gridPane.add(label1, 4, 9, 1, 1);//row 1
+        gridPane.add(labelE2, 4, 10, 100, 1);//row 1/1+
+        gridPane.add(label1_, 4, 11, 1, 1);//row 1+
+        gridPane.add(labelE3, 4, 12, 100, 1);//row 1+/2-
+        gridPane.add(label_2, 4, 13, 1, 1);//row 2-
+        gridPane.add(labelE4, 4, 14, 100, 1);//row 2-/2
+        gridPane.add(label2, 4, 15, 1, 1);//row 2
+        gridPane.add(labelE5, 4, 16, 100, 1);//row 2/2+
+        gridPane.add(label2_, 4, 17, 1, 1);//row 2+
+        gridPane.add(labelE6, 4, 18, 100, 1);//row 2+/3-
+        gridPane.add(label_3, 4, 19, 1, 1);//row 3-
+        gridPane.add(labelE7, 4, 20, 100, 1);//row 3-/3
+        gridPane.add(label3, 4, 21, 1, 1);//row 3
+        gridPane.add(labelE8, 4, 22, 100, 1);//row 3/3+
+        gridPane.add(label3_, 4, 23, 1, 1);//row 3+
+        gridPane.add(labelE9, 4, 24, 100, 1);//row 3+/4-
+        gridPane.add(label_4, 4, 25, 1, 1);//row 4-
+        gridPane.add(labelE10, 4, 26, 100, 1);//row 4-/4
+        gridPane.add(label4, 4, 27, 1, 1);//row 4
+        gridPane.add(labelE11, 4, 28, 100, 1);//row 4/4+
+        gridPane.add(label4_, 4, 29, 1, 1);//row 4+
+        gridPane.add(labelE12, 4, 30, 100, 1);//row 4++
+        gridPane.add(name, 4, 40, 20, 5);
+        gridPane.add(className, 4, 50,20,5);
         
-        
+        System.out.println("here");
+        //Button test = new Button("tezt");
+        //gridPane.add(test,8,21);
+        for (int w = 0; w < assGrade.size(); w++) {
+            //System.out.println("im in");
+           
+            String temp =((String) assGrade.values().toArray()[w]);
+            System.out.println("temp is ?" + temp);
+            if(temp !=null){ 
+                final Button btn = new Button();
+                double r=15;
+                btn.setShape(new Circle(r));
+                btn.setMinSize(2*r, 2*r);
+                btn.setMaxSize(2*r, 2*r);
+                getPlacement(temp); 
+                //gridPane.add(btn,7,25);
+                gridPane.add(btn, w+7, getPlacement(assGrade.get((String) assGrade.keySet().toArray()[w])));
+            }else{
+                
+            }
+            System.out.println();
+            //System.out.println("weird "+ getPlacement((String) assGrade.values().toArray()[w]));
+           
+
+        }
+       
         Scene scene = new Scene(gridPane, 1200, 900);
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-    //creates evidence record
-    public static void ER(){
+        
         
     }
     
-//    public void start(Stage primaryStage) {
-//          BorderPane root = new BorderPane();
-//          Label label = new Label("Some\ntext");
-//          //label.setGraphic(new ImageView(getClass().getResource("/images/Folder-icon.png").toExternalForm()));
-//          label.setMaxWidth(Double.POSITIVE_INFINITY);
-//          label.setMaxHeight(Double.POSITIVE_INFINITY);
-//          label.setStyle("-fx-border-color: blue;");
-//          root.setCenter(label);
-////          contentDisplayBox.getItems().addAll(ContentDisplay.values());
-////          contentDisplayBox.getSelectionModel().select(ContentDisplay.LEFT);
-////          label.contentDisplayProperty().bind(contentDisplayBox.valueProperty());
-////          label.alignmentProperty().bind(alignmentBox.valueProperty());
-////          label.textAlignmentProperty().bind(textAlignmentBox.valueProperty());
-//          GridPane ctrls = new GridPane();
-//          ctrls.setHgap(5);
-//          ctrls.setVgap(5);
-//          ctrls.setPadding(new Insets(10));
-//          ctrls.addRow(0, new Label("Content display:"), new Label("Alignment:"), new Label("Text Alignment:"));
-////          ctrls.addRow(1,  contentDisplayBox, alignmentBox, textAlignmentBox);
-//        Scene scene = new Scene(ctrls, 1200, 900);
-//          primaryStage.setScene(scene);
-//          primaryStage.show();
-//    }
+    public int getPlacement(String mark) {
+        int i=0;
+        switch (mark) {
+            case "R":
+                i = 4;
+                break;
+            case "1-":
+                i = 7;
+                break;
+            case "1":
+                i = 9;
+                break;
+            case "1+":
+                i = 11;
+                break;
+            case "2-":
+                i = 13;
+                break;
+            case "2":
+                i = 15;
+                break;
+            case "2+":
+                i = 17;
+                break;
+            case "3-":
+                i = 19;
+                break;
+            case "3":
+                i = 21;
+                break;
+            case "3+":
+                i = 23;
+                break;
+            case "3+/4-":
+                i = 24;
+                break;
+            case "4-":
+                i = 25;
+                break;
+            case "4-/4":
+                i = 26;
+                break;
+            case "4":
+                i = 27;
+                break;
+            case "4/4+":
+                i = 28;
+                break;
+            case "4+":
+                i = 29;
+                break;
+            case "4++":
+                i = 30;
+                break;
+            case "null":
+                i =0;
+            default:
+                i = 0;
+        }
+       return i;         
+    }
+    
+  
+    public void display() throws SQLException{
 
-     /*@Override
-     //opens evidence record page 
-     //mainly used for testing
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Evidence Record");
-        Parent homeRoot = FXMLLoader.load(getClass().getResource("eRPage.fxml"));
-        Scene homeScene = new Scene(homeRoot);
-        primaryStage.setScene(homeScene);
-        primaryStage.show();
-    }*/
+       getAssignmentGradeId(CHOSEN);
+       System.out.println(assGrade);
+
+    }
+    
+    public void getAssignmentGradeId(Student s) throws SQLException{
+        
+        HashMap temnp = new HashMap();
+        //ObservableList<Mark> marks = FXCollections.observableArrayList();
+        
+        JdbcDao jdbc = new JdbcDao();
+        Connection database = jdbc.getConnection();
+        
+        try{
+            String sql = "SELECT * FROM Assignment_grade WHERE Student_id = ? ";
+            PreparedStatement statement = database.prepareStatement(sql);
+            statement.setInt(1,s.getId());
+            //System.out.println("student id: " + stId);
+           
+            ResultSet rs = statement.executeQuery();
+            if(rs!= null){
+                while(rs.next()){
+                    int id = rs.getInt("Assignment_grade_id");
+                    int assId = rs.getInt("Assignment_id");
+                    String mark = rs.getString("Assignment_grade");
+                    if(belongsToClass(assId) == true){
+                        String assName = getAssignmentName(assId);
+                        String name = getAssignmentName(assId);
+                        assGrade.put(name,mark);
+                    }
+                    
+           
+                    //System.out.println("the Mark object " + temp.getMap());
+                }
+            }else{
+                System.out.println("no result from db");
+            }
+            //Student1 tempS = new Student1(s.getName(),marks);
+                    //System.out.println("the student bind is " + tempS.getMap());
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+        //System.out.println("size of result array " + result.size());
+//       for(Mark m:result){
+//           System.out.println("the result is " + m);
+//       }
+          
+        
+    }
+    /**
+     * check if the assignment belongs to the current class
+     * @param assId
+     * @return 
+     */
+    public boolean belongsToClass(int assId){
+        JdbcDao jdbc = new JdbcDao();
+        Connection database = jdbc.getConnection();
+        try{
+            String sql = "SELECT * FROM Assignment WHERE Assignment_Id = ?  AND Class_Id = ?";
+            PreparedStatement statement = database.prepareStatement(sql);
+            statement.setInt(1,assId);
+            statement.setInt(2,CLASS_ID);
+            System.out.println("current class id is: " + CLASS_ID);
+           
+            ResultSet rs = statement.executeQuery();
+            if(rs!= null){
+                while(rs.next()){
+                    return true;
+                    //System.out.println("assignment name  " + result);
+                }
+            }else{
+                System.out.println("no result from db");
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+        return false;
+    }
+        
+
+    public String getAssignmentName(int assId){
+        String result ="";
+        JdbcDao jdbc = new JdbcDao();
+        Connection database = jdbc.getConnection();
+        
+        try{
+            String sql = "SELECT * FROM Assignment WHERE Assignment_Id = ? ";
+            PreparedStatement statement = database.prepareStatement(sql);
+            statement.setInt(1,assId);
+            //System.out.println("student id: " + stId);
+           
+            ResultSet rs = statement.executeQuery();
+            if(rs!= null){
+                while(rs.next()){
+                    result = rs.getString("Assignment_Name");   
+                    //System.out.println("assignment name  " + result);
+                }
+            }else{
+                System.out.println("no result from db");
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+        return result;
+    }
+    
+    public String getName(){
+        return CHOSEN.getName();
+    }
+   public String getClassName(){
+       String result ="";
+        JdbcDao jdbc = new JdbcDao();
+        Connection database = jdbc.getConnection();
+        
+        try{
+            String sql = "SELECT * FROM Class WHERE Class_ID = ? ";
+            PreparedStatement statement = database.prepareStatement(sql);
+            statement.setInt(1,CLASS_ID);
+            //System.out.println("student id: " + stId);
+           
+            ResultSet rs = statement.executeQuery();
+            if(rs!= null){
+                while(rs.next()){
+                    result = rs.getString("Class_Name");   
+                    System.out.println("class name  " + result);
+                }
+            }else{
+                System.out.println("no result from db");
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+        return result;
+   }
+       
+    
+    
 }

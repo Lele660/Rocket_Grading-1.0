@@ -29,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import pages.evidenceRecord.evidence_Record;
 
 /**
  * FXML Controller class
@@ -94,20 +95,7 @@ public class erPageController implements Initializable {
         secondaryStage.setScene(lScene);
         secondaryStage.show();
     }
-    //adds students to comboBox
-//    public void Students() throws IOException {
-//        int spot=0;
-//            while(spot<=pages.files.info.S.length()){
-//                String comboItem =pages.files.info.getEnrolledStudnet(spot, classCode);
-//                if(comboItem == null){
-//                    spot++;
-//                }else{
-//                    comboItems.add(comboItem);
-//                    spot++;
-//                    students.setItems(comboItems);
-//                }
-//            }
-//    }
+  
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -120,23 +108,27 @@ public class erPageController implements Initializable {
     }
     
     public void displayStudents() throws SQLException{
+        STUDENT_LIST.clear();
         Student comboItem = null;
-        retrieveEnrollment();
         retrieveStudents();
+        System.out.println("number of students on list " + STUDENT_LIST.size());
         for(Student s:STUDENT_LIST){
             comboItem = s;
+            comboItems.add(comboItem);
         }
-        comboItems.add(comboItem);
+        
     }
     
-    public void selectClass(ActionEvent event) throws IOException{
+    public void selectStudent(ActionEvent event) throws IOException{
         CHOSEN = (Student) students.getValue();
-        Parent lRoot = FXMLLoader.load(getClass().getResource("/pages/evidenceRecord/eRPage.fxml"));
-        Scene lScene = new Scene(lRoot);
-        Stage secondaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        secondaryStage.setTitle("evidence record");
-        secondaryStage.setScene(lScene);
-        secondaryStage.show();
+        System.out.println("go");
+        evidence_Record er=new evidence_Record();
+        try{
+            er.ER();
+        }catch(Exception e){
+
+        }
+        
        
     }
     
