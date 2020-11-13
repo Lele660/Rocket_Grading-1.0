@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -32,6 +33,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 //import static pages.evidenceRecordTab.erPageController.CHOSEN;
 import static pages.homePage.HomeController.CLASS_ID;
@@ -58,73 +60,94 @@ public class evidenceRecord extends Application{
 //        primaryStage.setScene(newClassScene);
 //        primaryStage.show(); 
         
-        
-    }
-    //creates evidence record
-    public void ER() throws Exception{
-        display();
-        primaryStage.setTitle("Evidence Record");
+        primaryStage.setTitle("Evidence Record");//sets title of the stage
         
         Label labelOv = new Label("             ");//creates a border around chart
-        labelOv.setStyle("-fx-background-color: white;");
-        labelOv.setMaxWidth(Double.POSITIVE_INFINITY);
-        labelOv.setMaxHeight(Double.POSITIVE_INFINITY);
+        labelOv.setStyle("-fx-background-color: white;");//makes background of label white
+        labelOv.setMaxWidth(Double.POSITIVE_INFINITY);//makes the max width the entire width of the columns
+        labelOv.setMaxHeight(Double.POSITIVE_INFINITY);//makes the max height the entire height of the rowss
         Label labelOh = new Label("          ");//creates a border around chart
         labelOh.setStyle("-fx-background-color: white;");
         labelOh.setMaxWidth(Double.POSITIVE_INFINITY);
         labelOh.setMaxHeight(Double.POSITIVE_INFINITY);
-        Label labelInfo = new Label(" ");//edit to have student information
         
         
-        //creates levels lables
-        //Label name = new Label(getName());
-        Label name = new Label("test Name");
-        //Label className = new Label(getClassName());
+        //creates labels for student information
+        Label name = new Label(getName());
+        Label className = new Label(getClassName());
         name.setStyle("-fx-background-color: #112416 #112416;");
         name.setTextFill(Color.web("#fffefe"));
-        Label className = new Label("test class");
+        name.setFont(new Font("Arial", 30));//sets font and font size of text in label
         className.setStyle("-fx-background-color: #112416 #112416;");
         className.setTextFill(Color.web("#fffefe"));
+        className.setFont(new Font("Arial", 30));
         
+        //creates levels lables
         Label labelR = new Label("       R       ");
         labelR.setStyle("-fx-background-color: #112416 #112416;");
         labelR.setTextFill(Color.web("#fffefe"));
+        labelR.setMaxHeight(Double.POSITIVE_INFINITY);
+        labelR.setFont(new Font("Arial", 20));
         Label label_1 = new Label("       1-      ");
         label_1.setStyle("-fx-background-color: #112416 #112416;");
         label_1.setTextFill(Color.web("#fffefe"));
+        label_1.setMaxHeight(Double.POSITIVE_INFINITY);
+        label_1.setFont(new Font("Arial", 20));
         Label label1 = new Label("       1       ");
         label1.setStyle("-fx-background-color: #112416 #112416;");
         label1.setTextFill(Color.web("#fffefe"));
+        label1.setMaxHeight(Double.POSITIVE_INFINITY);
+        label1.setFont(new Font("Arial", 20));
         Label label1_ = new Label("      1+      ");
         label1_.setStyle("-fx-background-color: #112416 #112416;");
         label1_.setTextFill(Color.web("#fffefe"));
+        label1_.setMaxHeight(Double.POSITIVE_INFINITY);
+        label1_.setFont(new Font("Arial", 20));
         Label label_2 = new Label("       2-      ");
         label_2.setStyle("-fx-background-color: #112416 #112416;");
         label_2.setTextFill(Color.web("#fffefe"));
+        label_2.setMaxHeight(Double.POSITIVE_INFINITY);
+        label_2.setFont(new Font("Arial", 20));
         Label label2 = new Label("       2       ");
         label2.setStyle("-fx-background-color: #112416 #112416;");
         label2.setTextFill(Color.web("#fffefe"));
+        label2.setMaxHeight(Double.POSITIVE_INFINITY);
+        label2.setFont(new Font("Arial", 20));
         Label label2_ = new Label("      2+      ");
         label2_.setStyle("-fx-background-color: #112416 #112416;");
         label2_.setTextFill(Color.web("#fffefe"));
+        label2_.setMaxHeight(Double.POSITIVE_INFINITY);
+        label2_.setFont(new Font("Arial", 20));
         Label label_3 = new Label("       3-      ");
         label_3.setStyle("-fx-background-color: #112416 #112416;");
         label_3.setTextFill(Color.web("#fffefe"));
+        label_3.setMaxHeight(Double.POSITIVE_INFINITY);
+        label_3.setFont(new Font("Arial", 20));
         Label label3 = new Label("       3       ");
         label3.setStyle("-fx-background-color: #112416 #112416;");
         label3.setTextFill(Color.web("#fffefe"));
+        label3.setMaxHeight(Double.POSITIVE_INFINITY);
+        label3.setFont(new Font("Arial", 20));
         Label label3_ = new Label("      3+      ");
         label3_.setStyle("-fx-background-color: #112416 #112416;");
         label3_.setTextFill(Color.web("#fffefe"));
+        label3_.setMaxHeight(Double.POSITIVE_INFINITY);
+        label3_.setFont(new Font("Arial", 20));
         Label label_4 = new Label("       4-      ");
         label_4.setStyle("-fx-background-color: #112416 #112416;");
         label_4.setTextFill(Color.web("#fffefe"));
+        label_4.setMaxHeight(Double.POSITIVE_INFINITY);
+        label_4.setFont(new Font("Arial", 20));
         Label label4 = new Label("       4       ");
         label4.setStyle("-fx-background-color: #112416 #112416;");
         label4.setTextFill(Color.web("#fffefe"));
+        label4.setMaxHeight(Double.POSITIVE_INFINITY);
+        label4.setFont(new Font("Arial", 20));
         Label label4_ = new Label("      4+      ");
         label4_.setStyle("-fx-background-color: #112416 #112416;");
         label4_.setTextFill(Color.web("#fffefe"));
+        label4_.setMaxHeight(Double.POSITIVE_INFINITY);
+        label4_.setFont(new Font("Arial", 20));
         
         //creates spacers between levels(makes it easier to read)
         Label labelE = new Label("");
@@ -181,17 +204,16 @@ public class evidenceRecord extends Application{
         labelE12.setMaxHeight(Double.POSITIVE_INFINITY);
         
         GridPane gridPane = new GridPane();
-        //gridPane.setGridLinesVisible(true);
-        gridPane.add(labelInfo, 0, 0, 1, 1);
         gridPane.add(labelOv, 0, 1, 4, 300);
         gridPane.add(labelOh, 1, 0, 300, 4);
         
-        
         int g=6;
-        for(int p=0; p<assGrade.size(); p++){
+        //creates and adds labels that hold names of the assignments
+        for(int p=0; p<15; p++){//change
             Label labelT = new Label("hello");//change
             labelT.setStyle("-fx-background-color: #112416 #112416;");
             labelT.setTextFill(Color.web("#fffefe"));
+            labelT.setFont(new Font("Arial", 20));
             gridPane.add(labelT, g-1, 4, 1, 1);
             
             Label labelQ = new Label("    ");
@@ -230,15 +252,13 @@ public class evidenceRecord extends Application{
         gridPane.add(labelE11, 4, 28, 100, 1);//row 4/4+
         gridPane.add(label4_, 4, 29, 1, 1);//row 4+
         gridPane.add(labelE12, 4, 30, 100, 1);//row 4++
-        gridPane.add(name, 4, 300, 1, 1);
-        gridPane.add(className, 4, 301, 1, 1);
+        gridPane.add(name, 4, 300, 100, 1);
+        gridPane.add(className, 4, 301, 100, 1);
         
         System.out.println("here");
-        //Button test = new Button("tezt");
-        //gridPane.add(test,8,21);
         int h=5;
+        //creates and adds buttons to the collumn of the assignment and row of the earned grade
         for (int w = 0; w < 12; w++) {
-            //System.out.println("im in");
             String temp =((String) assGrade.values().toArray()[w]);
             //System.out.println("temp is ?" + temp);
             if(temp !=null){ 
@@ -249,20 +269,22 @@ public class evidenceRecord extends Application{
                 btn.setMaxSize(2*r, 2*r);
                 getPlacement(temp); 
                 gridPane.add(btn, h, getPlacement(assGrade.get((String) assGrade.keySet().toArray()[w])));
-                //System.out.println("im in");
                 h+=2;
             }else{
                 
             }
             System.out.println();
             //System.out.println("weird "+ getPlacement((String) assGrade.values().toArray()[w]));
-           
-
         }
        
-        Scene scene = new Scene(gridPane, 1200, 900);
+        Scene scene = new Scene(gridPane, 1700, 900);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+    //creates evidence record
+    public void ER() throws Exception{
+        display();
+        
     }
     
     public int getPlacement(String mark) {
@@ -338,7 +360,7 @@ public class evidenceRecord extends Application{
     public void getAssignmentGradeId(Student s) throws SQLException{
         
         HashMap temnp = new HashMap();
-        //ObservableList<Mark> marks = FXCollections.observableArrayList();
+        ObservableList<Mark> marks = FXCollections.observableArrayList();
         
         JdbcDao jdbc = new JdbcDao();
         Connection database = jdbc.getConnection();
@@ -374,9 +396,9 @@ public class evidenceRecord extends Application{
             e.getCause();
         }
         //System.out.println("size of result array " + result.size());
-//       for(Mark m:result){
-//           System.out.println("the result is " + m);
-//       }
+       for(Mark m:result){
+           System.out.println("the result is " + m);
+       }
           
         
     }
