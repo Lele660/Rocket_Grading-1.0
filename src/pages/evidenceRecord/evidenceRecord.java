@@ -60,6 +60,11 @@ public class evidenceRecord extends Application{
 //        primaryStage.setScene(newClassScene);
 //        primaryStage.show(); 
         
+        
+    }
+    //creates evidence record
+    public void ER() throws Exception{
+        display();
         primaryStage.setTitle("Evidence Record");//sets title of the stage
         
         Label labelOv = new Label("             ");//creates a border around chart
@@ -280,11 +285,6 @@ public class evidenceRecord extends Application{
         Scene scene = new Scene(gridPane, 1700, 900);
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-    //creates evidence record
-    public void ER() throws Exception{
-        display();
-        
     }
     
     public int getPlacement(String mark) {
